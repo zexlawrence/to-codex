@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学习复盘</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f5ef;
+      --panel: #ffffff;
+      --panel-soft: #faf8f2;
+      --text: #24221f;
+      --muted: #6e675f;
+      --line: #ded8cc;
+      --primary: #246b5f;
+      --primary-soft: #dceee9;
+      --accent: #b65f32;
+      --accent-soft: #f2dfd2;
+      --math: #345f9f;
+      --math-soft: #e1e9f7;
+      --physics: #246b5f;
+      --physics-soft: #dceee9;
+      --chemistry: #8b5a96;
+      --chemistry-soft: #eadfed;
+      --shadow: 0 16px 40px rgba(35, 30, 22, 0.08);
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .title h1 {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 9px 12px;
+      cursor: pointer;
+      min-height: 40px;
+    }
+
+    .button.primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .button:focus-visible,
+    .field input:focus,
+    .field select:focus,
+    textarea:focus {
+      outline: 3px solid rgba(36, 107, 95, 0.25);
+      outline-offset: 2px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .calendar-panel {
+      padding: 16px;
+      position: sticky;
+      top: 18px;
+    }
+
+    .calendar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .month-title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .settings {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 12px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--text);
+      padding: 7px 9px;
+    }
+
+    .weekday-grid,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .weekday {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 4px;
+    }
+
+    .day {
+      min-height: 66px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 10px;
+      padding: 8px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    .day:hover {
+      border-color: var(--primary);
+    }
+
+    .day.blank {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .day.selected {
+      border-color: var(--primary);
+      box-shadow: inset 0 0 0 2px var(--primary);
+    }
+
+    .day.today .date-num {
+      color: var(--accent);
+    }
+
+    .day.has-entry .entry-dot {
+      opacity: 1;
+    }
+
+    .date-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .date-num {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .entry-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      opacity: 0;
+      flex: 0 0 auto;
+    }
+
+    .subject {
+      width: fit-content;
+      max-width: 100%;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .subject.physics {
+      color: var(--physics);
+      background: var(--physics-soft);
+    }
+
+    .subject.math {
+      color: var(--math);
+      background: var(--math-soft);
+    }
+
+    .subject.chemistry {
+      color: var(--chemistry);
+      background: var(--chemistry-soft);
+    }
+
+    .subject.unset {
+      color: var(--muted);
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+    }
+
+    .report-panel {
+      padding: 22px;
+    }
+
+    .report-header {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .selected-date {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .save-state {
+      color: var(--muted);
+      font-size: 13px;
+      min-height: 19px;
+    }
+
+    .report-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .report-section {
+      display: grid;
+      gap: 8px;
+    }
+
+    .report-section label {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .rating-control {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
+      gap: 6px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel-soft);
+    }
+
+    .rating-button {
+      min-height: 38px;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .rating-button[aria-pressed="true"] {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .status-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .status-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 126px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel-soft);
+      color: var(--text);
+      padding: 10px 11px;
+      line-height: 1.55;
+    }
+
+    .compact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .small-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .footer-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    @media (max-width: 920px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar-panel,
+      .report-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+      }
+
+      .topbar,
+      .calendar-head {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .actions,
+      .settings {
+        grid-template-columns: 1fr;
+      }
+
+      .weekday-grid,
+      .calendar-grid {
+        gap: 5px;
+      }
+
+      .day {
+        min-height: 68px;
+        padding: 7px;
+        border-radius: 8px;
+      }
+
+      .date-num {
+        font-size: 17px;
+      }
+
+      .subject {
+        font-size: 12px;
+        padding: 3px 6px;
+      }
+
+      .compact-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="title">
+        <h1>学习复盘</h1>
+        <p>不写主观情绪化判断，只记录客观事实与当下思路，让每天的学习过程留下清晰证据。</p>
+      </div>
+      <div class="actions">
+        <button class="button" type="button" id="todayBtn">回到今日</button>
+        <button class="button primary" type="button" id="copyBtn">复制当日日报</button>
+        <button class="button" type="button" id="screenshotBtn">截图当日日报</button>
+      </div>
+    </header>
+
+    <section class="layout" aria-label="学习日报日历">
+      <div class="panel calendar-panel">
+        <div class="calendar-head">
+          <h2 class="month-title" id="monthTitle"></h2>
+        </div>
+
+        <div class="weekday-grid" aria-hidden="true">
+          <div class="weekday">一</div>
+          <div class="weekday">二</div>
+          <div class="weekday">三</div>
+          <div class="weekday">四</div>
+          <div class="weekday">五</div>
+          <div class="weekday">六</div>
+          <div class="weekday">日</div>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </div>
+
+      <aside class="panel report-panel" aria-label="当日日报">
+        <div class="report-header">
+          <h2 class="selected-date" id="selectedDateTitle"></h2>
+          <div class="meta">
+            <span class="subject" id="selectedSubject"></span>
+            <span id="durationText">学习时长：3 小时</span>
+          </div>
+          <div class="field">
+            <label for="subjectSelect">今日学习科目</label>
+            <select id="subjectSelect">
+              <option value="">未填写</option>
+              <option value="physics">物理</option>
+              <option value="math">数学</option>
+              <option value="chemistry">化学</option>
+            </select>
+          </div>
+          <div class="save-state" id="saveState" aria-live="polite"></div>
+        </div>
+
+        <form class="report-form" id="reportForm">
+          <div class="report-section">
+            <label for="todayTasks">今日学习任务</label>
+            <textarea id="todayTasks" data-key="todayTasks" placeholder="例：完成力学基础复习；整理公式；讲解并练习 10 道典型题。"></textarea>
+          </div>
+
+          <div class="report-section">
+            <label for="tomorrowPlan">明日学习计划</label>
+            <textarea id="tomorrowPlan" data-key="tomorrowPlan" placeholder="例：进入下一科目，先复盘今日错题，再学习新知识点。"></textarea>
+          </div>
+
+          <div class="report-section">
+            <label for="goodPoints">今日做得好的地方</label>
+            <textarea id="goodPoints" data-key="goodPoints" placeholder="例：听课时能主动追问不懂的步骤；做题前先分析条件，没有急着套公式；错题能及时标出原因；今天专注度比昨天更稳定。"></textarea>
+          </div>
+
+          <div class="report-section">
+            <label for="problems">今日遇到的问题</label>
+            <textarea id="problems" data-key="problems" placeholder="记录知识理解问题、做题卡点、容易混淆的概念。"></textarea>
+          </div>
+
+          <div class="report-section">
+            <label for="solutions">思考与解决</label>
+            <textarea id="solutions" data-key="solutions" placeholder="写下老师讲解的关键思路、自己总结的方法、仍未解决的问题。"></textarea>
+          </div>
+
+          <div class="report-section">
+            <label>学习状态</label>
+            <div class="status-group">
+              <span class="status-label">今日专注度</span>
+              <div class="rating-control" data-rating-group="focus" aria-label="今日专注度评分">
+                <button class="rating-button" type="button" data-rating="5分" aria-pressed="false">5分</button>
+                <button class="rating-button" type="button" data-rating="4分" aria-pressed="false">4分</button>
+                <button class="rating-button" type="button" data-rating="3分" aria-pressed="false">3分</button>
+                <button class="rating-button" type="button" data-rating="2分" aria-pressed="false">2分</button>
+                <button class="rating-button" type="button" data-rating="1分" aria-pressed="false">1分</button>
+              </div>
+            </div>
+            <div class="status-group">
+              <span class="status-label">听课状态</span>
+              <div class="rating-control" data-rating-group="lecture" aria-label="听课状态评分">
+                <button class="rating-button" type="button" data-rating="很好" aria-pressed="false">很好</button>
+                <button class="rating-button" type="button" data-rating="较好" aria-pressed="false">较好</button>
+                <button class="rating-button" type="button" data-rating="一般" aria-pressed="false">一般</button>
+                <button class="rating-button" type="button" data-rating="较差" aria-pressed="false">较差</button>
+              </div>
+            </div>
+            <div class="status-group">
+              <span class="status-label">做题状态</span>
+              <div class="rating-control" data-rating-group="practice" aria-label="做题状态评分">
+                <button class="rating-button" type="button" data-rating="顺畅" aria-pressed="false">顺畅</button>
+                <button class="rating-button" type="button" data-rating="有卡顿" aria-pressed="false">有卡顿</button>
+                <button class="rating-button" type="button" data-rating="比较吃力" aria-pressed="false">比较吃力</button>
+              </div>
+            </div>
+            <div class="status-group">
+              <span class="status-label">精神状态</span>
+              <div class="rating-control" data-rating-group="energy" aria-label="精神状态评分">
+                <button class="rating-button" type="button" data-rating="充足" aria-pressed="false">充足</button>
+                <button class="rating-button" type="button" data-rating="一般" aria-pressed="false">一般</button>
+                <button class="rating-button" type="button" data-rating="疲惫" aria-pressed="false">疲惫</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <label for="selfReview">自我评价</label>
+            <textarea id="selfReview" data-key="selfReview" placeholder="今日总体评价、做得好的地方、需要改进的地方。"></textarea>
+          </div>
+
+          <p class="small-note">填写内容会自动保存在当前浏览器本地；换浏览器或清理缓存后不会同步。</p>
+
+          <div class="footer-actions">
+            <button class="button primary" type="button" id="saveBtn">保存</button>
+            <button class="button" type="button" id="clearBtn">清空当天</button>
+          </div>
+        </form>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const subjects = [
+      { value: "physics", name: "物理", className: "physics" },
+      { value: "math", name: "数学", className: "math" },
+      { value: "chemistry", name: "化学", className: "chemistry" }
+    ];
+    const fields = ["todayTasks", "tomorrowPlan", "goodPoints", "problems", "solutions", "selfReview"];
+    const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+    const augustStart = new Date(2026, 7, 1);
+    const storagePrefix = "studyDailyCalendar:2026-08:";
+    const today = new Date();
+    let selectedDate = stripTime(augustStart);
+
+    const calendarGrid = document.getElementById("calendarGrid");
+    const monthTitle = document.getElementById("monthTitle");
+    const selectedDateTitle = document.getElementById("selectedDateTitle");
+    const selectedSubject = document.getElementById("selectedSubject");
+    const saveState = document.getElementById("saveState");
+    const subjectSelect = document.getElementById("subjectSelect");
+    const ratingGroups = Array.from(document.querySelectorAll("[data-rating-group]"));
+    const statusLabels = {
+      focus: "今日专注度",
+      lecture: "听课状态",
+      practice: "做题状态",
+      energy: "精神状态"
+    };
+
+    function stripTime(date) {
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function toDateKey(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    }
+
+    function getSubjectByValue(value) {
+      return subjects.find((subject) => subject.value === value) || {
+        value: "",
+        name: "未填写",
+        className: "unset"
+      };
+    }
+
+    function getEntrySubject(date) {
+      const entry = loadEntry(date);
+      return getSubjectByValue(entry.subject || "");
+    }
+
+    function getEntryKey(date) {
+      return storagePrefix + "entry:" + toDateKey(date);
+    }
+
+    function loadEntry(date) {
+      try {
+        return JSON.parse(localStorage.getItem(getEntryKey(date)) || "{}");
+      } catch {
+        return {};
+      }
+    }
+
+    function saveEntry(date) {
+      const entry = {};
+      entry.subject = subjectSelect.value;
+      entry.statusRatings = getSelectedRatings();
+      fields.forEach((field) => {
+        entry[field] = document.getElementById(field).value.trim();
+      });
+      entry.updatedAt = new Date().toISOString();
+      localStorage.setItem(getEntryKey(date), JSON.stringify(entry));
+      renderCalendar();
+      showSaved("已保存");
+    }
+
+    function hasEntry(date) {
+      const entry = loadEntry(date);
+      return Boolean(entry.subject) || hasStatusRatings(entry.statusRatings) || fields.some((field) => entry[field]);
+    }
+
+    function showSaved(text) {
+      saveState.textContent = text;
+      window.clearTimeout(showSaved.timer);
+      showSaved.timer = window.setTimeout(() => {
+        saveState.textContent = "";
+      }, 1600);
+    }
+
+    function renderCalendar() {
+      calendarGrid.innerHTML = "";
+      monthTitle.textContent = "2026年 8月";
+
+      const first = new Date(2026, 7, 1);
+      const firstMondayIndex = (first.getDay() + 6) % 7;
+      const start = new Date(first);
+      start.setDate(first.getDate() - firstMondayIndex);
+
+      for (let i = 0; i < 42; i += 1) {
+        const date = new Date(start);
+        date.setDate(start.getDate() + i);
+        if (date.getMonth() !== 7) {
+          const blank = document.createElement("div");
+          blank.className = "day blank";
+          calendarGrid.appendChild(blank);
+          continue;
+        }
+        const subject = getEntrySubject(date);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = [
+          "day",
+          toDateKey(date) === toDateKey(selectedDate) ? "selected" : "",
+          toDateKey(date) === toDateKey(today) ? "today" : "",
+          hasEntry(date) ? "has-entry" : ""
+        ].filter(Boolean).join(" ");
+        button.setAttribute("aria-label", `${toDateKey(date)} ${subject.name}`);
+        button.innerHTML = `
+          <span class="date-row">
+            <span class="date-num">${date.getDate()}</span>
+            <span class="entry-dot" aria-hidden="true"></span>
+          </span>
+          <span class="subject ${subject.className}">${subject.name}</span>
+        `;
+        button.addEventListener("click", () => {
+          selectedDate = stripTime(date);
+          renderCalendar();
+          renderReport();
+        });
+        calendarGrid.appendChild(button);
+      }
+    }
+
+    function renderReport() {
+      const key = toDateKey(selectedDate);
+      const entry = loadEntry(selectedDate);
+      const subject = getSubjectByValue(entry.subject || "");
+      selectedDateTitle.textContent = `${key} ${weekdays[selectedDate.getDay()]}`;
+      selectedSubject.textContent = subject.name;
+      selectedSubject.className = `subject ${subject.className}`;
+      subjectSelect.value = entry.subject || "";
+      setSelectedRatings(entry.statusRatings || migrateLegacyRating(entry.statusRating));
+      fields.forEach((field) => {
+        document.getElementById(field).value = entry[field] || "";
+      });
+      saveState.textContent = entry.updatedAt ? "已载入当天记录" : "可开始填写当天日报";
+    }
+
+    function getSelectedRatings() {
+      const result = {};
+      ratingGroups.forEach((group) => {
+        const active = group.querySelector('[aria-pressed="true"]');
+        result[group.dataset.ratingGroup] = active ? active.dataset.rating : "";
+      });
+      return result;
+    }
+
+    function setSelectedRatings(values) {
+      ratingGroups.forEach((group) => {
+        const value = values[group.dataset.ratingGroup] || "";
+        group.querySelectorAll(".rating-button").forEach((button) => {
+          button.setAttribute("aria-pressed", button.dataset.rating === value ? "true" : "false");
+        });
+      });
+    }
+
+    function hasStatusRatings(values) {
+      return Boolean(values && Object.values(values).some(Boolean));
+    }
+
+    function migrateLegacyRating(value) {
+      return value ? { focus: value } : {};
+    }
+
+    function initializeControls() {
+      subjectSelect.addEventListener("change", () => {
+        saveEntry(selectedDate);
+        renderCalendar();
+        renderReport();
+      });
+
+      ratingGroups.forEach((group) => {
+        group.querySelectorAll(".rating-button").forEach((button) => {
+          button.addEventListener("click", () => {
+            const values = getSelectedRatings();
+            const groupName = group.dataset.ratingGroup;
+            values[groupName] = button.getAttribute("aria-pressed") === "true" ? "" : button.dataset.rating;
+            setSelectedRatings(values);
+            saveEntry(selectedDate);
+          });
+        });
+      });
+
+      document.getElementById("todayBtn").addEventListener("click", () => {
+        selectedDate = today.getFullYear() === 2026 && today.getMonth() === 7
+          ? stripTime(today)
+          : stripTime(augustStart);
+        renderCalendar();
+        renderReport();
+      });
+
+      document.getElementById("saveBtn").addEventListener("click", () => saveEntry(selectedDate));
+
+      document.getElementById("clearBtn").addEventListener("click", () => {
+        if (!confirm("确定清空当天日报吗？")) return;
+        localStorage.removeItem(getEntryKey(selectedDate));
+        renderCalendar();
+        renderReport();
+        showSaved("已清空");
+      });
+
+      document.getElementById("copyBtn").addEventListener("click", async () => {
+        saveEntry(selectedDate);
+        const report = buildReportText();
+        try {
+          await navigator.clipboard.writeText(report);
+          showSaved("当日日报已复制");
+        } catch {
+          showSaved("复制失败，可手动选中文本复制");
+          alert(report);
+        }
+      });
+
+      document.getElementById("screenshotBtn").addEventListener("click", () => {
+        saveEntry(selectedDate);
+        downloadReportImage();
+      });
+
+      fields.forEach((field) => {
+        const node = document.getElementById(field);
+        node.addEventListener("input", () => {
+          window.clearTimeout(node.saveTimer);
+          node.saveTimer = window.setTimeout(() => saveEntry(selectedDate), 500);
+        });
+      });
+    }
+
+    function buildReportText() {
+      const subject = getSubjectByValue(subjectSelect.value).name;
+      const values = Object.fromEntries(fields.map((field) => [field, document.getElementById(field).value.trim() || "（未填写）"]));
+      const ratings = getSelectedRatings();
+      const ratingText = Object.entries(statusLabels)
+        .map(([key, label]) => `${label}：${ratings[key] || "（未评分）"}`)
+        .join("\n");
+      return [
+        `一对一学习日报`,
+        `日期：${toDateKey(selectedDate)} ${weekdays[selectedDate.getDay()]}`,
+        `今日科目：${subject}`,
+        `学习时长：3小时`,
+        "",
+        `一、今日学习任务`,
+        values.todayTasks,
+        "",
+        `二、明日学习计划`,
+        values.tomorrowPlan,
+        "",
+        `三、今日做得好的地方`,
+        values.goodPoints,
+        "",
+        `四、今日遇到的问题`,
+        values.problems,
+        "",
+        `五、思考与解决`,
+        values.solutions,
+        "",
+        `六、学习状态`,
+        ratingText,
+        "",
+        `七、自我评价`,
+        values.selfReview
+      ].filter((line) => line !== "").join("\n");
+    }
+
+    function downloadReportImage() {
+      const report = buildReportText();
+      const lines = report.split("\n");
+      const canvasWidth = 1080;
+      const padding = 64;
+      const contentWidth = canvasWidth - padding * 2;
+      const bodySize = 30;
+      const titleSize = 42;
+      const lineHeight = 46;
+      const sectionGap = 16;
+      const wrapped = [];
+
+      lines.forEach((line, index) => {
+        const isTitle = index === 0;
+        const isSection = /^([一二三四五六七]、)/.test(line);
+        const fontSize = isTitle ? titleSize : bodySize;
+        const fontWeight = isTitle || isSection ? "700" : "400";
+        wrapped.push(...wrapText(line, contentWidth, `${fontWeight} ${fontSize}px Microsoft YaHei, PingFang SC, sans-serif`).map((text) => ({
+          text,
+          fontSize,
+          fontWeight,
+          isTitle,
+          isSection,
+          isBlank: line === ""
+        })));
+        if (isSection) {
+          wrapped.push({ text: "", fontSize: bodySize, fontWeight: "400", isBlank: true, extra: sectionGap });
+        }
+      });
+
+      const canvasHeight = Math.max(720, padding * 2 + wrapped.reduce((sum, line) => {
+        if (line.isBlank) return sum + (line.extra || 18);
+        return sum + (line.isTitle ? 58 : lineHeight);
+      }, 0));
+      const canvas = document.createElement("canvas");
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#f7f5ef";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#ffffff";
+      roundRect(ctx, 32, 32, canvasWidth - 64, canvasHeight - 64, 24);
+      ctx.fill();
+      ctx.strokeStyle = "#ded8cc";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      let y = padding + 18;
+      wrapped.forEach((line) => {
+        if (line.isBlank) {
+          y += line.extra || 18;
+          return;
+        }
+        ctx.font = `${line.fontWeight} ${line.fontSize}px Microsoft YaHei, PingFang SC, sans-serif`;
+        ctx.fillStyle = line.isSection ? "#246b5f" : "#24221f";
+        ctx.fillText(line.text, padding, y);
+        y += line.isTitle ? 58 : lineHeight;
+      });
+
+      const link = document.createElement("a");
+      link.download = `学习复盘-${toDateKey(selectedDate)}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+      showSaved("当日日报截图已生成");
+    }
+
+    function wrapText(text, maxWidth, font) {
+      if (text === "") return [""];
+      const canvas = wrapText.canvas || (wrapText.canvas = document.createElement("canvas"));
+      const ctx = canvas.getContext("2d");
+      ctx.font = font;
+      const result = [];
+      let line = "";
+      Array.from(text).forEach((char) => {
+        const testLine = line + char;
+        if (ctx.measureText(testLine).width > maxWidth && line) {
+          result.push(line);
+          line = char;
+        } else {
+          line = testLine;
+        }
+      });
+      if (line) result.push(line);
+      return result;
+    }
+
+    function roundRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    initializeControls();
+    renderCalendar();
+    renderReport();
+  </script>
+</body>
+</html>
