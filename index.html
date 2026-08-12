@@ -198,8 +198,34 @@
       color: var(--text);
     }
 
-    .day:hover {
+    .day:not(.has-entry):hover {
       border-color: var(--primary);
+    }
+
+    .day.has-entry {
+      border-color: #a9c9bf;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 7px 18px rgba(31, 93, 78, 0.14);
+      transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+    }
+
+    .day.has-entry.math-entry {
+      border-color: #d29b52;
+      background: #f4e5c9;
+      color: #4d2c08;
+      box-shadow: 0 7px 18px rgba(163, 101, 22, 0.12);
+    }
+
+    .day.has-entry:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+      box-shadow: 0 11px 24px rgba(31, 93, 78, 0.2);
+    }
+
+    .day.has-entry:focus-visible {
+      outline: 3px solid rgba(203, 139, 52, 0.42);
+      outline-offset: 2px;
     }
 
     .day.blank {
@@ -218,6 +244,7 @@
 
     .day.has-entry .entry-dot {
       opacity: 1;
+      background: currentColor;
     }
 
     .date-row {
@@ -269,6 +296,16 @@
       color: var(--muted);
       background: var(--panel-soft);
       border: 1px solid var(--line);
+    }
+
+    .day.has-entry .subject {
+      color: inherit;
+      background: rgba(255, 255, 255, 0.18);
+      border: 0;
+    }
+
+    .day.has-entry.math-entry .subject {
+      background: rgba(255, 255, 255, 0.42);
     }
 
     .report-panel {
@@ -493,27 +530,27 @@
         <form class="report-form" id="reportForm">
           <div class="report-section">
             <label for="todayTasks">今日学习任务</label>
-            <textarea id="todayTasks" data-key="todayTasks" placeholder="例：完成力学基础复习；整理公式；讲解并练习 10 道典型题。"></textarea>
+            <textarea id="todayTasks" data-key="todayTasks" placeholder="写清具体内容和完成量。例：复习有机物结构；限时完成 10 道选择题；独立订正 3 道错题。"></textarea>
           </div>
 
           <div class="report-section">
             <label for="tomorrowPlan">明日学习计划</label>
-            <textarea id="tomorrowPlan" data-key="tomorrowPlan" placeholder="例：进入下一科目，先复盘今日错题，再学习新知识点。"></textarea>
+            <textarea id="tomorrowPlan" data-key="tomorrowPlan" placeholder="写清内容、数量和验收标准。例：闭卷默写官能团性质；完成 10 道选择题，正确率达到 80%；错题全部独立重做。"></textarea>
           </div>
 
           <div class="report-section">
             <label for="goodPoints">今日做得好的地方</label>
-            <textarea id="goodPoints" data-key="goodPoints" placeholder="例：听课时能主动追问不懂的步骤；做题前先分析条件，没有急着套公式；错题能及时标出原因；今天专注度比昨天更稳定。"></textarea>
+            <textarea id="goodPoints" data-key="goodPoints" placeholder="用具体行为或结果说明。例：10 道题独立做对 8 道；卡题时主动标出已知条件；订正后能讲清解题思路。"></textarea>
           </div>
 
           <div class="report-section">
             <label for="problems">今日遇到的问题</label>
-            <textarea id="problems" data-key="problems" placeholder="记录知识理解问题、做题卡点、容易混淆的概念。"></textarea>
+            <textarea id="problems" data-key="problems" placeholder="写明具体知识点或题目，以及卡在哪一步。例：第 6 题无法根据官能团判断反应类型；两组反应条件容易混淆。"></textarea>
           </div>
 
           <div class="report-section">
             <label for="solutions">思考与解决</label>
-            <textarea id="solutions" data-key="solutions" placeholder="写下老师讲解的关键思路、自己总结的方法、仍未解决的问题。"></textarea>
+            <textarea id="solutions" data-key="solutions" placeholder="针对上面的问题写下一步动作，并注明是否已解决。例：重画知识结构并做 3 道同类题；仍不能独立解释，明天请老师复查。"></textarea>
           </div>
 
           <div class="report-section">
@@ -557,10 +594,10 @@
 
           <div class="report-section">
             <label for="selfReview">自我评价</label>
-            <textarea id="selfReview" data-key="selfReview" placeholder="今日总体评价、做得好的地方、需要改进的地方。"></textarea>
+            <textarea id="selfReview" data-key="selfReview" placeholder="用事实总结今天的表现。例：听课能跟上，但独立做题约 40 分钟后开始走神；明天把练习拆成两段并记录正确率。"></textarea>
           </div>
 
-          <p class="small-note">填写内容会自动保存在当前浏览器本地；换浏览器或清理缓存后不会同步。</p>
+          <p class="small-note" id="localStorageNote">填写内容会自动保存在当前浏览器本地；换浏览器或清理缓存后不会同步。</p>
 
           <div class="footer-actions">
             <button class="button primary" type="button" id="saveBtn">保存</button>
@@ -581,6 +618,85 @@
     const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
     const augustStart = new Date(2026, 7, 1);
     const storagePrefix = "studyDailyCalendar:2026-08:";
+    const defaultEntries = {
+      "2026-08-03": {
+        subject: "chemistry",
+        todayTasks: "25年高考有机化学真题\n复习有机基础知识\n回顾讲解本学期周测错题",
+        tomorrowPlan: "复习结构和有机选择题讲解",
+        goodPoints: "部分重要知识点考试技巧有把握\n能开始专注不走神",
+        problems: "基础知识不牢固\n和学校老师进度有漏洞",
+        solutions: "要复盘今日学到的必考点，多看书并背熟基础知识",
+        statusRatings: { focus: "4分", lecture: "较好", practice: "比较吃力", energy: "一般" },
+        selfReview: "能听进去但还要弥补以前空缺\n做题技巧有点贫瘠\n上课精神专注度不够持久",
+        updatedAt: "2026-08-03T15:00:00.000Z"
+      },
+      "2026-08-04": {
+        subject: "chemistry",
+        todayTasks: "完成24年高考有机大题和前十二道选择\n复习结构与高一基础",
+        tomorrowPlan: "质量计算和可逆反应、勒夏特列",
+        goodPoints: "做题更快进入状态，正确率有提升\n理解有机官能团转化等",
+        problems: "结构基础不扎实，计算易出错\n没背熟基本可逆反应和有机物性质",
+        solutions: "复盘错题和笔记，多背书上公式",
+        statusRatings: { focus: "4分", lecture: "较好", practice: "有卡顿", energy: "一般" },
+        selfReview: "不能熬夜",
+        updatedAt: "2026-08-04T15:00:00.000Z"
+      },
+      "2026-08-05": {
+        subject: "chemistry",
+        todayTasks: "有机化学高考真题，佛山一模卷",
+        tomorrowPlan: "巩固今天知识，化工流程题",
+        goodPoints: "基础知识有长进，选择题能弄懂大概思路并做对",
+        problems: "有点分神，做题速度慢，思路不能清晰",
+        solutions: "基础不够扎实，要补笔记并写错题本",
+        statusRatings: { focus: "3分", lecture: "一般", practice: "有卡顿", energy: "疲惫" },
+        selfReview: "别熬夜和偷懒，减少侥幸借口",
+        updatedAt: "2026-08-05T15:00:00.000Z"
+      },
+      "2026-08-06": {
+        subject: "chemistry",
+        todayTasks: "两道有机大题，两道工业流程题，两道化学反应原理题",
+        tomorrowPlan: "复习高一化学知识，练工艺流程和反应平衡真题",
+        goodPoints: "写题能按思路来推导，基本做题技巧运用，计算题能看懂",
+        problems: "有机官能团推导不熟，方程式不规范没背熟，看题细节条件不够仔细\n遇到难题易抗拒心理",
+        solutions: "多练多记多背\n错题和笔记保持思考过程\n看题信息要仔细",
+        statusRatings: { focus: "4分", lecture: "较好", practice: "有卡顿", energy: "一般" },
+        selfReview: "状态比昨天好一点，不能熬夜＋不吃早餐",
+        updatedAt: "2026-08-06T15:00:00.000Z"
+      },
+      "2026-08-07": {
+        subject: "chemistry",
+        todayTasks: "复习化学基础知识并通过练习巩固",
+        tomorrowPlan: "明天继续巩固化学基础大盘",
+        goodPoints: "今天上课认真，进度能跟上",
+        problems: "基础知识记忆差，容易忘记，运用有些生疏",
+        solutions: "多去通过练习并从中获取有用知识来填补知识漏洞",
+        statusRatings: { focus: "4分", lecture: "较好", practice: "顺畅", energy: "一般" },
+        selfReview: "良好",
+        updatedAt: "2026-08-07T15:00:00.000Z"
+      },
+      "2026-08-08": {
+        subject: "chemistry",
+        todayTasks: "完成化学四种大题基本解答\n两张卷选择题正确率过半",
+        tomorrowPlan: "高考数学先基础选填",
+        goodPoints: "理解答题技巧和计算推导",
+        problems: "难题难克服，蒙中侥幸了\n看题不仔细容易漏思路",
+        solutions: "",
+        statusRatings: { focus: "4分", lecture: "较好", practice: "顺畅", energy: "一般" },
+        selfReview: "化学基本还行了，下周看看数学",
+        updatedAt: "2026-08-08T15:00:00.000Z"
+      },
+      "2026-08-10": {
+        subject: "math",
+        todayTasks: "练习佛二模数学简单题\n写向量方程大题",
+        tomorrowPlan: "学数学大题思路解答\n练习前十二道正确率",
+        goodPoints: "能记得高一解题思路步骤",
+        problems: "不会二级结论和推导公式",
+        solutions: "依据题解分析考点再分步解答\n选填抓关键信息",
+        statusRatings: { focus: "4分", lecture: "较好", practice: "比较吃力", energy: "一般" },
+        selfReview: "换学科没反应过来",
+        updatedAt: "2026-08-10T15:00:00.000Z"
+      }
+    };
     const today = new Date();
     let selectedDate = stripTime(augustStart);
 
@@ -627,15 +743,23 @@
       return storagePrefix + "entry:" + toDateKey(date);
     }
 
+    function isFixedEntry(date) {
+      return Object.prototype.hasOwnProperty.call(defaultEntries, toDateKey(date));
+    }
+
     function loadEntry(date) {
+      if (isFixedEntry(date)) return defaultEntries[toDateKey(date)];
       try {
-        return JSON.parse(localStorage.getItem(getEntryKey(date)) || "{}");
+        const stored = localStorage.getItem(getEntryKey(date));
+        if (stored !== null) return JSON.parse(stored || "{}");
+        return {};
       } catch {
         return {};
       }
     }
 
     function saveEntry(date) {
+      if (isFixedEntry(date)) return;
       const entry = {};
       entry.subject = subjectSelect.value;
       entry.statusRatings = getSelectedRatings();
@@ -679,22 +803,25 @@
           calendarGrid.appendChild(blank);
           continue;
         }
+        const hasRecord = hasEntry(date);
         const subject = getEntrySubject(date);
+        const calendarSubjectName = hasRecord ? subject.name : "无";
         const button = document.createElement("button");
         button.type = "button";
         button.className = [
           "day",
           toDateKey(date) === toDateKey(selectedDate) ? "selected" : "",
           toDateKey(date) === toDateKey(today) ? "today" : "",
-          hasEntry(date) ? "has-entry" : ""
+          hasRecord ? "has-entry" : "",
+          hasRecord && subject.value ? `${subject.className}-entry` : ""
         ].filter(Boolean).join(" ");
-        button.setAttribute("aria-label", `${toDateKey(date)} ${subject.name}`);
+        button.setAttribute("aria-label", `${toDateKey(date)} ${calendarSubjectName}`);
         button.innerHTML = `
           <span class="date-row">
             <span class="date-num">${date.getDate()}</span>
             <span class="entry-dot" aria-hidden="true"></span>
           </span>
-          <span class="subject ${subject.className}">${subject.name}</span>
+          <span class="subject ${hasRecord ? subject.className : "unset"}">${calendarSubjectName}</span>
         `;
         button.addEventListener("click", () => {
           selectedDate = stripTime(date);
@@ -708,16 +835,30 @@
     function renderReport() {
       const key = toDateKey(selectedDate);
       const entry = loadEntry(selectedDate);
+      const fixed = isFixedEntry(selectedDate);
       const subject = getSubjectByValue(entry.subject || "");
       selectedDateTitle.textContent = `${key} ${weekdays[selectedDate.getDay()]}`;
       selectedSubject.textContent = subject.name;
       selectedSubject.className = `subject ${subject.className}`;
       subjectSelect.value = entry.subject || "";
+      subjectSelect.disabled = fixed;
       setSelectedRatings(entry.statusRatings || migrateLegacyRating(entry.statusRating));
-      fields.forEach((field) => {
-        document.getElementById(field).value = entry[field] || "";
+      ratingGroups.forEach((group) => {
+        group.querySelectorAll(".rating-button").forEach((button) => {
+          button.disabled = fixed;
+        });
       });
-      saveState.textContent = entry.updatedAt ? "已载入当天记录" : "可开始填写当天日报";
+      fields.forEach((field) => {
+        const node = document.getElementById(field);
+        node.value = entry[field] || "";
+        node.readOnly = fixed;
+      });
+      document.getElementById("localStorageNote").hidden = fixed;
+      document.getElementById("saveBtn").hidden = fixed;
+      document.getElementById("clearBtn").hidden = fixed;
+      saveState.textContent = fixed
+        ? "已固定，内容不可修改"
+        : entry.updatedAt ? "已载入当天记录" : "可开始填写当天日报";
     }
 
     function getSelectedRatings() {
@@ -776,6 +917,7 @@
       document.getElementById("saveBtn").addEventListener("click", () => saveEntry(selectedDate));
 
       document.getElementById("clearBtn").addEventListener("click", () => {
+        if (isFixedEntry(selectedDate)) return;
         if (!confirm("确定清空当天日报吗？")) return;
         localStorage.removeItem(getEntryKey(selectedDate));
         renderCalendar();
@@ -784,7 +926,7 @@
       });
 
       document.getElementById("copyBtn").addEventListener("click", async () => {
-        saveEntry(selectedDate);
+        if (!isFixedEntry(selectedDate)) saveEntry(selectedDate);
         const report = buildReportText();
         try {
           await navigator.clipboard.writeText(report);
@@ -796,7 +938,7 @@
       });
 
       document.getElementById("screenshotBtn").addEventListener("click", () => {
-        saveEntry(selectedDate);
+        if (!isFixedEntry(selectedDate)) saveEntry(selectedDate);
         downloadReportImage();
       });
 
