@@ -89,6 +89,10 @@
       padding: 9px 12px;
       cursor: pointer;
       min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
 
     .button.primary {
@@ -484,7 +488,7 @@
         <p>不写主观情绪化判断，只记录客观事实与当下思路，让每天的学习过程留下清晰证据。</p>
       </div>
       <div class="actions">
-        <button class="button" type="button" id="todayBtn">回到今日</button>
+        <a class="button" href="./学生学习复盘分析汇总-2026年8月.html#home">复盘分析</a>
         <button class="button primary" type="button" id="copyBtn">复制当日日报</button>
         <button class="button" type="button" id="screenshotBtn">截图当日日报</button>
       </div>
@@ -904,14 +908,6 @@
             saveEntry(selectedDate);
           });
         });
-      });
-
-      document.getElementById("todayBtn").addEventListener("click", () => {
-        selectedDate = today.getFullYear() === 2026 && today.getMonth() === 7
-          ? stripTime(today)
-          : stripTime(augustStart);
-        renderCalendar();
-        renderReport();
       });
 
       document.getElementById("saveBtn").addEventListener("click", () => saveEntry(selectedDate));
