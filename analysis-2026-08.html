@@ -230,6 +230,7 @@
     .boundary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .role-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .role-grid.student-only { grid-template-columns: minmax(0, 1fr); }
 
     .mini-card {
       padding: 22px;
@@ -393,6 +394,25 @@
     .role-card:nth-child(2) { background: #66532d; }
     .role-card:nth-child(3) { background: #355b67; }
     .role-card p { color: rgba(255,255,255,0.82); }
+
+    .encouragement {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 3px solid #a8d3c1;
+      border-radius: 0 12px 12px 0;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .encouragement strong {
+      display: block;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .encouragement p {
+      margin: 6px 0 0;
+      line-height: 1.75;
+    }
 
     .note {
       margin-top: 20px;
@@ -1211,10 +1231,10 @@
         <p class="eyebrow">学习档案 · 2026年8月</p>
         <h1>学习复盘分析主页</h1>
         <div class="meta-list" aria-label="学习复盘汇总信息">
-          <span class="pill">已记录：7天</span>
-          <span class="pill">累计学习：21小时</span>
-          <span class="pill">当前科目：数学</span>
-          <span class="pill">最近更新：8月10日</span>
+          <span class="pill">已记录：11天</span>
+          <span class="pill">累计学习：33小时</span>
+          <span class="pill">当前科目：化学</span>
+          <span class="pill">最近更新：8月15日</span>
         </div>
       </section>
 
@@ -1255,11 +1275,11 @@
               <div class="calendar-day no-report"><span class="calendar-date-number">9</span></div>
 
               <a class="calendar-day has-report math" href="#2026-08-10" aria-label="8月10日，数学，查看学习复盘分析"><span class="calendar-date-number">10</span><span class="calendar-subject">数学</span></a>
-              <div class="calendar-day no-report"><span class="calendar-date-number">11</span></div>
+              <a class="calendar-day has-report math" href="#2026-08-11" aria-label="8月11日，数学，查看学习复盘分析"><span class="calendar-date-number">11</span><span class="calendar-subject">数学</span></a>
               <div class="calendar-day no-report"><span class="calendar-date-number">12</span></div>
-              <div class="calendar-day no-report"><span class="calendar-date-number">13</span></div>
-              <div class="calendar-day no-report"><span class="calendar-date-number">14</span></div>
-              <div class="calendar-day no-report"><span class="calendar-date-number">15</span></div>
+              <a class="calendar-day has-report math" href="#2026-08-13" aria-label="8月13日，数学，查看学习复盘分析"><span class="calendar-date-number">13</span><span class="calendar-subject">数学</span></a>
+              <a class="calendar-day has-report math" href="#2026-08-14" aria-label="8月14日，数学，查看学习复盘分析"><span class="calendar-date-number">14</span><span class="calendar-subject">数学</span></a>
+              <a class="calendar-day has-report" href="#2026-08-15" aria-label="8月15日，化学，查看学习复盘分析"><span class="calendar-date-number">15</span><span class="calendar-subject">化学</span></a>
               <div class="calendar-day no-report"><span class="calendar-date-number">16</span></div>
 
               <div class="calendar-day no-report"><span class="calendar-date-number">17</span></div>
@@ -1289,10 +1309,10 @@
           </div>
 
           <div class="home-overview" aria-label="阶段学习概览">
-            <div class="overview-card"><span class="overview-value">7份</span><span class="overview-label">已收集复盘记录</span></div>
-            <div class="overview-card"><span class="overview-value">21小时</span><span class="overview-label">累计一对一学习</span></div>
+            <div class="overview-card"><span class="overview-value">11份</span><span class="overview-label">已收集复盘记录</span></div>
+            <div class="overview-card"><span class="overview-value">33小时</span><span class="overview-label">累计一对一学习</span></div>
             <div class="overview-card"><span class="overview-value">2科</span><span class="overview-label">化学与数学</span></div>
-            <div class="overview-card"><span class="overview-value">8月10日</span><span class="overview-label">最近一次更新</span></div>
+            <div class="overview-card"><span class="overview-value">8月15日</span><span class="overview-label">最近一次更新</span></div>
           </div>
 
           <div class="subject-section">
@@ -1302,15 +1322,15 @@
             </div>
             <div class="subject-index">
               <a class="subject-card" href="#subject-chemistry" aria-label="查看化学阶段分析">
-                <div class="subject-card-top"><h4>化学</h4><span class="subject-count">6份记录</span></div>
-                <p class="subject-meta">累计18小时 · 8月3日至8月8日</p>
-                <div class="subject-stage"><span>当前阶段</span><strong>由集中补基础转入巩固与监测</strong></div>
+                <div class="subject-card-top"><h4>化学</h4><span class="subject-count">7份记录</span></div>
+                <p class="subject-meta">累计21小时 · 8月3日至8月15日</p>
+                <div class="subject-stage"><span>当前阶段</span><strong>低频维护中仍暴露规范与猜测问题</strong></div>
                 <div class="subject-card-action">查看化学分析 →</div>
               </a>
               <a class="subject-card math" href="#subject-math" aria-label="查看数学阶段分析">
-                <div class="subject-card-top"><h4>数学</h4><span class="subject-count">1份记录</span></div>
-                <p class="subject-meta">累计3小时 · 始于8月10日</p>
-                <div class="subject-stage"><span>当前阶段</span><strong>建立基础选填与大题能力基线</strong></div>
+                <div class="subject-card-top"><h4>数学</h4><span class="subject-count">4份记录</span></div>
+                <p class="subject-meta">累计12小时 · 8月10日至8月14日</p>
+                <div class="subject-stage"><span>当前阶段</span><strong>基础连接、作答规范与速度并行补缺</strong></div>
                 <div class="subject-card-action">查看数学分析 →</div>
               </a>
             </div>
@@ -1319,39 +1339,39 @@
           <p class="home-note">有复盘的日期可点击进入完整分析；没有复盘的日期仅作日历展示。后续新增记录时，对应日期会自动转为入口样式。</p>
         </section>
       </main>
-      <footer class="combined-footer">当前汇总包含2026年8月3日至10日七份学习日报；8月9日暂无记录，仅作为阶段性学习观察。</footer>
+      <footer class="combined-footer">当前汇总包含2026年8月3日至15日十一份学习日报；8月9日和12日无课或暂无记录。</footer>
     </section>
 
     <section class="route-view report-view" id="subjectChemistry" data-route="subject-chemistry" hidden>
       <nav class="report-toolbar" aria-label="化学阶段分析操作">
         <a class="button" href="#home">← 返回分析主页</a>
-        <div class="report-toolbar-actions"><a class="button" href="#2026-08-08">查看最近化学日报</a><button class="button" type="button" data-print>打印 / 保存PDF</button></div>
+        <div class="report-toolbar-actions"><a class="button" href="#2026-08-15">查看最近化学日报</a><button class="button" type="button" data-print>打印 / 保存PDF</button></div>
       </nav>
 
       <section class="hero subject-hero">
         <p class="eyebrow">按学科分析 · 化学</p>
         <h1>化学阶段学习分析</h1>
-        <div class="meta-list"><span class="pill">6份记录</span><span class="pill">累计18小时</span><span class="pill">8月3日—8月8日</span><span class="pill">阶段：巩固与监测</span></div>
+        <div class="meta-list"><span class="pill">7份记录</span><span class="pill">累计21小时</span><span class="pill">8月3日—8月15日</span><span class="pill">阶段：维护与再诊断</span></div>
       </section>
 
       <main>
         <section class="section">
           <div class="section-head"><div><p class="section-kicker">01 · 学科概览</p><h2>做题体验明显改善，但稳定得分仍需验收</h2></div></div>
           <div class="subject-metrics">
-            <div class="subject-metric"><strong>6份</strong><span>化学复盘样本</span></div>
-            <div class="subject-metric"><strong>18小时</strong><span>累计一对一学习</span></div>
-            <div class="subject-metric"><strong>3.8 / 5</strong><span>阶段专注度均值</span></div>
-            <div class="subject-metric"><strong>顺畅</strong><span>最近两次做题状态</span></div>
+            <div class="subject-metric"><strong>7份</strong><span>化学复盘样本</span></div>
+            <div class="subject-metric"><strong>21小时</strong><span>累计一对一学习</span></div>
+            <div class="subject-metric"><strong>3.7 / 5</strong><span>阶段专注度均值</span></div>
+            <div class="subject-metric"><strong>有卡顿</strong><span>最近一次做题状态</span></div>
           </div>
-          <div class="conclusion"><div class="conclusion-bar" aria-hidden="true"></div><div><strong>阶段判断</strong>六天内，做题状态由“比较吃力”改善为三次“有卡顿”，再连续两次“顺畅”；问题也从宽泛的基础薄弱逐渐细化到官能团、方程式规范、条件提取、难题启动和猜测得分。说明集中补习已经产生效果，但尚不能仅凭主观顺畅认定化学过关。</div></div>
+          <div class="conclusion"><div class="conclusion-bar" aria-hidden="true"></div><div><strong>阶段判断</strong>前六份记录中做题状态曾由“比较吃力”改善到连续两次“顺畅”；8月15日回到化学后，专注降至3分、精神疲惫、做题有卡顿，并再次出现方程式条件不规范和选择题靠猜。说明前期训练产生过效果，但跨科间隔后的提取稳定性与规范得分仍需复测。</div></div>
         </section>
 
         <section class="section">
           <div class="section-head"><div><p class="section-kicker">02 · 专注趋势</p><h2>专注度在低点后恢复并保持稳定</h2></div></div>
-          <div class="trend-row" aria-label="六份化学记录专注度">
-            <div class="trend-point"><strong>4</strong><span>8月3日</span></div><div class="trend-point"><strong>4</strong><span>8月4日</span></div><div class="trend-point"><strong>3</strong><span>8月5日</span></div><div class="trend-point"><strong>4</strong><span>8月6日</span></div><div class="trend-point"><strong>4</strong><span>8月7日</span></div><div class="trend-point"><strong>4</strong><span>8月8日</span></div>
+          <div class="trend-row" aria-label="七份化学记录专注度">
+            <div class="trend-point"><strong>4</strong><span>8月3日</span></div><div class="trend-point"><strong>4</strong><span>8月4日</span></div><div class="trend-point"><strong>3</strong><span>8月5日</span></div><div class="trend-point"><strong>4</strong><span>8月6日</span></div><div class="trend-point"><strong>4</strong><span>8月7日</span></div><div class="trend-point"><strong>4</strong><span>8月8日</span></div><div class="trend-point"><strong>3</strong><span>8月15日</span></div>
           </div>
-          <p class="note">8月5日出现专注、听课和精神状态低点，随后三份记录恢复到4分。现有数据支持“短期恢复”，不足以评价长期注意力。</p>
+          <p class="note">8月15日是在数天数学训练后重新回到化学，专注和精神状态同时回落。现有记录不足以区分换科、疲劳和知识遗忘各自的影响，需要隔日同类题复测。</p>
         </section>
 
         <section class="section">
@@ -1359,7 +1379,7 @@
           <div class="boundary-grid">
             <article class="mini-card fact"><span class="tag">进步信号</span><h3>从跟随讲解走向基本输出</h3><ul><li>做题体验由吃力逐步改善为顺畅。</li><li>能够描述官能团、方程式、条件和计算等具体卡点。</li><li>开始理解综合题技巧和计算推导。</li><li>能完成四类大题基本解答，并首次记录选择题正确率。</li></ul></article>
             <article class="mini-card signal"><span class="tag">持续问题</span><h3>规范、审题和难题推进仍限制得分</h3><ul><li>基础记忆与隔日提取是否稳定仍缺少复测。</li><li>方程式规范和题干条件遗漏会直接失分。</li><li>难题容易抗拒或停止推进。</li><li>部分选择题正确来自猜测，真实掌握率可能被高估。</li></ul></article>
-            <article class="mini-card limit"><span class="tag">暂不能判断</span><h3>缺少统一的阶段验收数据</h3><ul><li>各天题量、用时和老师提示次数记录不足。</li><li>没有持续区分独立完成、排除后选择和纯猜。</li><li>“顺畅”尚未经过隔日、隔周同类题验证。</li><li>六份补习记录不能代替正式考试结果。</li></ul></article>
+            <article class="mini-card limit"><span class="tag">暂不能判断</span><h3>缺少统一的阶段验收数据</h3><ul><li>各天题量、用时和外部提示次数记录不足。</li><li>没有持续区分独立完成、排除后选择和纯猜。</li><li>“顺畅”尚未经过隔日、隔周同类题验证。</li><li>六份补习记录不能代替正式考试结果。</li></ul></article>
           </div>
         </section>
 
@@ -1380,49 +1400,50 @@
             <a class="subject-date-link" href="#2026-08-06" aria-label="查看8月6日化学复盘"><span class="subject-date-number">6</span><span class="subject-date-meta">8月 · 化学</span></a>
             <a class="subject-date-link" href="#2026-08-07" aria-label="查看8月7日化学复盘"><span class="subject-date-number">7</span><span class="subject-date-meta">8月 · 化学</span></a>
             <a class="subject-date-link" href="#2026-08-08" aria-label="查看8月8日化学复盘"><span class="subject-date-number">8</span><span class="subject-date-meta">8月 · 化学</span></a>
+            <a class="subject-date-link" href="#2026-08-15" aria-label="查看8月15日化学复盘"><span class="subject-date-number">15</span><span class="subject-date-meta">8月 · 化学</span></a>
           </div>
         </section>
       </main>
-      <footer class="combined-footer">化学阶段分析基于2026年8月3日至8日六份日报，后续新增化学记录时继续更新。</footer>
+      <footer class="combined-footer">化学阶段分析基于2026年8月3日至15日七份日报，其中8月15日为跨科后回访记录。</footer>
     </section>
 
     <section class="route-view report-view" id="subjectMath" data-route="subject-math" hidden>
       <nav class="report-toolbar" aria-label="数学阶段分析操作">
         <a class="button" href="#home">← 返回分析主页</a>
-        <div class="report-toolbar-actions"><a class="button" href="#2026-08-10">查看最近数学日报</a><button class="button" type="button" data-print>打印 / 保存PDF</button></div>
+        <div class="report-toolbar-actions"><a class="button" href="#2026-08-14">查看最近数学日报</a><button class="button" type="button" data-print>打印 / 保存PDF</button></div>
       </nav>
 
       <section class="hero subject-hero math">
         <p class="eyebrow">按学科分析 · 数学</p>
         <h1>数学阶段学习分析</h1>
-        <div class="meta-list"><span class="pill">1份记录</span><span class="pill">累计3小时</span><span class="pill">始于8月10日</span><span class="pill">阶段：建立基线</span></div>
+        <div class="meta-list"><span class="pill">4份记录</span><span class="pill">累计12小时</span><span class="pill">8月10日—8月14日</span><span class="pill">8月12日无课</span></div>
       </section>
 
       <main>
         <section class="section">
-          <div class="section-head"><div><p class="section-kicker">01 · 学科概览</p><h2>首日表现反映换科适应与知识激活问题</h2></div></div>
+          <div class="section-head"><div><p class="section-kicker">01 · 学科概览</p><h2>连续四份记录显示：知识面在扩展，独立调用与作答稳定性仍不足</h2></div></div>
           <div class="subject-metrics">
-            <div class="subject-metric"><strong>1份</strong><span>数学复盘样本</span></div>
-            <div class="subject-metric"><strong>3小时</strong><span>累计一对一学习</span></div>
-            <div class="subject-metric"><strong>4 / 5</strong><span>最近专注度</span></div>
-            <div class="subject-metric"><strong>数据不足</strong><span>暂不判断趋势</span></div>
+            <div class="subject-metric"><strong>4份</strong><span>数学复盘样本</span></div>
+            <div class="subject-metric"><strong>12小时</strong><span>累计一对一学习</span></div>
+            <div class="subject-metric"><strong>3.5 / 5</strong><span>阶段专注度均值</span></div>
+            <div class="subject-metric"><strong>60%</strong><span>8月14日自报错题正确率</span></div>
           </div>
-          <div class="conclusion"><div class="conclusion-bar" aria-hidden="true"></div><div><strong>阶段判断</strong>专注度4分、听课较好、精神一般，说明投入状态稳定；做题比较吃力，且学生能回忆高一解题步骤，却不会部分二级结论和推导公式。当前更像数学知识网络尚未重新激活，不能与化学经过六天训练后的“顺畅”直接比较。</div></div>
+          <div class="conclusion"><div class="conclusion-bar" aria-hidden="true"></div><div><strong>阶段判断</strong>8月10日至14日的专注度为4、3、3、4分，中间8月12日无课。学生从向量与模考大题逐步进入三角函数、立体几何、圆锥曲线和概率统计，能整理错题并自报60%正确率；但看题启动、二级结论、函数图像、作答规范和速度反复出现，说明当前主要矛盾不是单一知识点，而是“基础关系—题型识别—规范输出”的连接尚不稳定。</div></div>
         </section>
 
         <section class="section">
-          <div class="section-head"><div><p class="section-kicker">02 · 当前画像</p><h2>已有步骤记忆，但基础关系与自主调用尚不稳定</h2></div></div>
+          <div class="section-head"><div><p class="section-kicker">02 · 当前画像</p><h2>进步可见，但猜测、速度和情绪状态会放大成绩波动</h2></div></div>
           <div class="boundary-grid">
-            <article class="mini-card fact"><span class="tag">已有基础</span><h3>并非从零开始</h3><ul><li>能回忆高一阶段解题思路和步骤。</li><li>愿意从简单题、向量大题和前12道选填开始。</li><li>解决方案已包含分析考点、分步作答和抓关键信息。</li></ul></article>
-            <article class="mini-card signal"><span class="tag">当前缺口</span><h3>公式提取与题型识别形成断点</h3><ul><li>不熟悉二级结论及其适用条件。</li><li>不会推导部分公式，基础关系尚未连通。</li><li>“换学科没反应过来”还需拆成读题、回忆、选方法或计算。</li></ul></article>
-            <article class="mini-card limit"><span class="tag">证据边界</span><h3>一份样本不能代表数学水平</h3><ul><li>没有选填题数、正确率、用时和模块分布。</li><li>没有记录大题无提示完成到哪一步。</li><li>暂时无法区分知识遗忘与换科适应的影响比例。</li></ul></article>
+            <article class="mini-card fact"><span class="tag">进步信号</span><h3>开始主动重建公式和错题链条</h3><ul><li>训练覆盖向量、函数、三角、立体几何、圆锥曲线和概率统计。</li><li>能够提出对齐函数图像、自己推导公式和举一反三。</li><li>8月14日自报错题正确率达到60%。</li></ul></article>
+            <article class="mini-card signal"><span class="tag">当前缺口</span><h3>识题、规范和速度仍反复卡住</h3><ul><li>看题没思路，容易混淆二级结论和答题步骤。</li><li>函数与二元方程不熟，不会依据题意画图。</li><li>大题答题不规范，做题速度偏慢。</li><li>8月14日明确记录情绪和环境会左右状态。</li></ul></article>
+            <article class="mini-card limit"><span class="tag">证据边界</span><h3>正确率信息仍不完整</h3><ul><li>60%没有题量、难度、用时和独立完成情况。</li><li>“容易猜对答案”说明部分正确不能直接视为掌握。</li><li>8月12日无课，不能把日期间隔当作连续训练。</li></ul></article>
           </div>
         </section>
 
         <section class="section">
           <div class="section-head"><div><p class="section-kicker">03 · 建立基线</p><h2>未来3—5份记录先固定采集这些数据</h2></div></div>
           <table class="review-table"><thead><tr><th>观察主题</th><th>需要记录的事实</th></tr></thead><tbody><tr><td>前12道选填</td><td>正确数、总用时、猜测题数及各知识模块表现。</td></tr><tr><td>公式提取</td><td>能闭卷写出的基础公式，以及能说明来源和条件的二级结论。</td></tr><tr><td>大题启动</td><td>无提示时能否识别考点并写出第一步，卡住前完成到哪里。</td></tr><tr><td>题解依赖</td><td>看过题解后能否立即复现，隔日能否再次独立完成。</td></tr><tr><td>反应速度</td><td>慢在读题、知识回忆、方法选择、计算还是书写。</td></tr></tbody></table>
-          <p class="note">收集3—5份数学记录后，再计算阶段均值和趋势；目前只依据已有事实，不做长期能力判断。</p>
+          <p class="note">已有四份数学记录，可以形成初步阶段判断，但仍不能据此评价长期数学能力；下一步需要固定记录题量、用时、独立完成和猜测题数。</p>
         </section>
 
         <section class="section">
@@ -1432,10 +1453,10 @@
 
         <section class="section">
           <div class="section-head"><div><p class="section-kicker">05 · 数学日报</p><h2>数学复盘记录</h2></div></div>
-          <div class="subject-date-links"><a class="subject-date-link math" href="#2026-08-10" aria-label="查看8月10日数学复盘"><span class="subject-date-number">10</span><span class="subject-date-meta">8月 · 数学</span></a></div>
+          <div class="subject-date-links"><a class="subject-date-link math" href="#2026-08-10" aria-label="查看8月10日数学复盘"><span class="subject-date-number">10</span><span class="subject-date-meta">8月 · 数学</span></a><a class="subject-date-link math" href="#2026-08-11" aria-label="查看8月11日数学复盘"><span class="subject-date-number">11</span><span class="subject-date-meta">8月 · 数学</span></a><a class="subject-date-link math" href="#2026-08-13" aria-label="查看8月13日数学复盘"><span class="subject-date-number">13</span><span class="subject-date-meta">8月 · 数学</span></a><a class="subject-date-link math" href="#2026-08-14" aria-label="查看8月14日数学复盘"><span class="subject-date-number">14</span><span class="subject-date-meta">8月 · 数学</span></a></div>
         </section>
       </main>
-      <footer class="combined-footer">数学阶段分析目前基于2026年8月10日一份日报，样本较少，暂不形成趋势结论。</footer>
+      <footer class="combined-footer">数学阶段分析基于2026年8月10、11、13、14日四份日报；8月12日无课。</footer>
     </section>
 
     <section class="route-view report-view" id="report0803" data-route="2026-08-03" hidden>
@@ -1552,7 +1573,7 @@
             <h2>问题不在“有没有学”，而在“能否独立用出来”</h2>
           </div>
         </div>
-        <p class="muted">当天记录显示，学生在一对一讲解中能够跟随老师，但独立做题仍然比较吃力。当前最值得追踪的是：基础知识、知识提取和题目应用之间是否存在断点。</p>
+        <p class="muted">当天记录显示，学生在一对一讲解中能够跟随思路，但独立做题仍然比较吃力。当前最值得追踪的是：基础知识、知识提取和题目应用之间是否存在断点。</p>
         <div class="conclusion">
           <div class="conclusion-bar" aria-hidden="true"></div>
           <div>
@@ -1596,7 +1617,7 @@
             <ul>
               <li>学生整体化学水平和长期学习能力。</li>
               <li>是否长期存在注意力问题。</li>
-              <li>一对一老师的教学质量。</li>
+              <li>一对一讲解与学生当前需要的匹配程度。</li>
               <li>3小时学习的实际产出和效率。</li>
             </ul>
           </article>
@@ -1614,13 +1635,13 @@
           <article class="loop-card">
             <span class="loop-number">1</span>
             <h3>听课输入</h3>
-            <p class="muted">学生自评听课“较好”，说明在老师提供解释和提示时，能够跟随思路。</p>
+            <p class="muted">学生自评听课“较好”，说明在获得解释和提示时，能够跟随思路。</p>
           </article>
           <div class="arrow" aria-hidden="true">→</div>
           <article class="loop-card focus">
             <span class="loop-number">2</span>
             <h3>独立提取与连接</h3>
-            <p>需要脱离老师提示，主动回忆知识、识别题型，并把条件与解题路径连接起来。这可能是当前薄弱环节。</p>
+            <p>需要在没有外部提示时主动回忆知识、识别题型，并把条件与解题路径连接起来。这可能是当前薄弱环节。</p>
           </article>
           <div class="arrow" aria-hidden="true">→</div>
           <article class="loop-card">
@@ -1679,7 +1700,7 @@
           </article>
           <article class="step">
             <span class="step-time">40–50分钟</span>
-            <div class="step-content"><h3>独立完成分层练习</h3><p>先做基础题，再做变式题；老师减少即时提示，让学生完整经历启动和推理过程。</p></div>
+            <div class="step-content"><h3>独立完成分层练习</h3><p>先做基础题，再做变式题；遇到卡顿时先独立尝试并记录卡点，完整经历启动和推理过程。</p></div>
           </article>
           <article class="step">
             <span class="step-time">20–30分钟</span>
@@ -1717,13 +1738,11 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">07 · 协作方式</p>
-            <h2>学生、老师和家长各自做一件关键的事</h2>
+            <h2>把问题转成学生本人可以执行的动作</h2>
           </div>
         </div>
-        <div class="role-grid">
-          <article class="role-card"><h3>学生</h3><p>把“哪里不好”改写成“哪道题、哪个知识点、卡在哪一步”，并记录自己能否独立重做。</p></article>
-          <article class="role-card"><h3>老师</h3><p>减少仅靠讲解判断掌握的情况，每节课留下一个无提示检测，并对齐校内教学进度。</p></article>
-          <article class="role-card"><h3>家长</h3><p>不只询问学习时长，可以问：“今天具体解决了什么？哪道题能证明已经会了？”</p></article>
+        <div class="role-grid student-only">
+          <article class="role-card"><h3>学生</h3><p>把“哪里不好”改写成“哪道题、哪个知识点、卡在哪一步”，并记录自己能否独立重做。</p><div class="encouragement"><strong>给自己的话</strong><p>你已经能够听进讲解，也能意识到基础与进度衔接存在缺口，这是一个真实起点。下一步不用急着证明全部掌握，先用一道独立重做题确认今天补上的内容。</p></div></article>
         </div>
       </section>
     </main>
@@ -1976,7 +1995,7 @@
           </article>
           <article class="step">
             <span class="step-time">40–50分钟</span>
-            <div class="step-content"><h3>完成分层练习</h3><p>先做基础判断，再做计算和情境变式题；老师暂缓提示，让学生完整表达判断依据。</p></div>
+            <div class="step-content"><h3>完成分层练习</h3><p>先做基础判断，再做计算和情境变式题；遇到卡顿时先写出自己的判断依据，再查看提示。</p></div>
           </article>
           <article class="step">
             <span class="step-time">20–30分钟</span>
@@ -2010,13 +2029,11 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">07 · 协作方式</p>
-            <h2>学生、老师和家长各自做一件关键的事</h2>
+            <h2>把正确率、错因和作息转成学生自己的记录</h2>
           </div>
         </div>
-        <div class="role-grid">
-          <article class="role-card"><h3>学生</h3><p>每次写“正确率提高”时补上题数；计算错题注明错在哪一步，并记录当晚睡眠时间。</p></article>
-          <article class="role-card"><h3>老师</h3><p>把计算错误分类，安排勒夏特列的无提示判断题，并用新题检验学生是否真正理解而非只会背结论。</p></article>
-          <article class="role-card"><h3>家长</h3><p>支持学生先改善作息，不把“不能熬夜”变成责备；关注第二天精神状态和学习表现是否同步变化。</p></article>
+        <div class="role-grid student-only">
+          <article class="role-card"><h3>学生</h3><p>每次写“正确率提高”时补上题数；计算错题注明错在哪一步，并记录当晚睡眠时间。</p><div class="encouragement"><strong>给自己的话</strong><p>你记录到进入状态更快、正确率有所提升，也能说出官能团转化和计算中的具体问题。进步已经出现，接下来把题数和错因补齐，就能判断它是否稳定。</p></div></article>
         </div>
       </section>
     </main>
@@ -2304,10 +2321,8 @@
               <h2>把自我提醒转成可执行安排</h2>
             </div>
           </div>
-          <div class="role-grid">
-            <article class="role-card"><h3>学生</h3><p>设定最晚入睡时间和明确的任务开始时间，第二天如实记录执行结果，不用“偷懒”或“找借口”笼统评价自己。</p></article>
-            <article class="role-card"><h3>老师</h3><p>课前用短测检查前一天内容；观察学生慢在知识提取、步骤组织还是计算，并控制新题型负荷。</p></article>
-            <article class="role-card"><h3>家长</h3><p>协助稳定睡眠与任务启动环境，不把状态下降直接解释为态度问题，重点观察调整后的实际变化。</p></article>
+          <div class="role-grid student-only">
+            <article class="role-card"><h3>学生</h3><p>设定最晚入睡时间和明确的任务开始时间，第二天如实记录执行结果，不用“偷懒”或“找借口”笼统评价自己。</p><div class="encouragement"><strong>给自己的话</strong><p>你已经注意到分神、速度和思路不清，也没有回避作息带来的影响。专注3分和疲惫只是在描述今天的状态，不是对能力的结论；先把睡眠和任务开始时间落实一次。</p></div></article>
           </div>
         </section>
       </main>
@@ -2493,7 +2508,7 @@
             <article class="loop-card">
               <span class="loop-number">1</span>
               <h3>思路推导</h3>
-              <p class="muted">学生已经能够沿着思路分析题目，说明不再完全依赖老师给出最终路径。</p>
+              <p class="muted">学生已经能够沿着思路分析题目，说明对外部给定路径的依赖正在下降。</p>
             </article>
             <div class="arrow" aria-hidden="true">→</div>
             <article class="loop-card focus">
@@ -2585,7 +2600,7 @@
           <table class="review-table">
             <thead><tr><th>观察主题</th><th>需要记录的事实</th></tr></thead>
             <tbody>
-              <tr><td>题目产出</td><td>每类题完成数量、正确数量、用时以及是否接受老师提示。</td></tr>
+              <tr><td>题目产出</td><td>每类题完成数量、正确数量、用时以及是否借助外部提示。</td></tr>
               <tr><td>方程式规范</td><td>错误来自未配平、条件遗漏、符号错误还是物质写错。</td></tr>
               <tr><td>条件提取</td><td>读题后能否主动标出限制条件；因遗漏条件失分几次。</td></tr>
               <tr><td>难题启动</td><td>出现抗拒时是否完成“三分钟启动”，之后能推进到哪一步。</td></tr>
@@ -2603,10 +2618,8 @@
               <h2>把“仔细一点”变成可以检查的动作</h2>
             </div>
           </div>
-          <div class="role-grid">
-            <article class="role-card"><h3>学生</h3><p>每道综合题先标条件、再列步骤；遇到抗拒只执行三分钟启动，并记录当天睡眠和早餐情况。</p></article>
-            <article class="role-card"><h3>老师</h3><p>把官能团、方程式和条件遗漏分别统计；减少即时提示，用独立书写检验“看懂”是否转化为得分。</p></article>
-            <article class="role-card"><h3>家长</h3><p>协助稳定睡眠和早餐安排，不把难题抗拒简单归因于懒惰，重点关注学生是否能开始第一步。</p></article>
+          <div class="role-grid student-only">
+            <article class="role-card"><h3>学生</h3><p>每道综合题先标条件、再列步骤；遇到抗拒只执行三分钟启动，并记录当天睡眠和早餐情况。</p><div class="encouragement"><strong>给自己的话</strong><p>你已经能按思路推导，并开始看懂计算过程，说明解题链条正在建立。当前的方程式规范、审题遗漏和难题抗拒都是可以逐项处理的问题，不需要一次解决全部。</p></div></article>
           </div>
         </section>
       </main>
@@ -2770,7 +2783,7 @@
               <h3>顺畅的含义尚不明确</h3>
               <ul>
                 <li>没有记录当天复习的具体知识模块。</li>
-                <li>没有题量、正确率、用时和老师提示次数。</li>
+                <li>没有题量、正确率、用时和外部提示次数。</li>
                 <li>顺畅可能来自题目较基础、熟悉度提升或真实掌握，暂不能区分。</li>
                 <li>自评“良好”没有补充具体表现，改善幅度仍需量化。</li>
               </ul>
@@ -2882,7 +2895,7 @@
             <thead><tr><th>观察主题</th><th>需要记录的事实</th></tr></thead>
             <tbody>
               <tr><td>复习范围</td><td>当天具体复习哪2—3个模块，各模块完成到什么程度。</td></tr>
-              <tr><td>即时表现</td><td>完成题数、正确题数、用时以及老师提示次数。</td></tr>
+              <tr><td>即时表现</td><td>完成题数、正确题数、用时以及外部提示次数。</td></tr>
               <tr><td>遗忘情况</td><td>课末和隔日分别能闭卷回忆多少，遗忘集中在哪类内容。</td></tr>
               <tr><td>运用迁移</td><td>原题会做后，新表述或新情境的同类题能否独立完成。</td></tr>
               <tr><td>做题流畅度</td><td>“顺畅”能否连续出现；若再次卡顿，卡在知识、识别、步骤还是计算。</td></tr>
@@ -2899,10 +2912,8 @@
               <h2>用小范围、短反馈代替宽泛地“多练”</h2>
             </div>
           </div>
-          <div class="role-grid">
-            <article class="role-card"><h3>学生</h3><p>每天写清具体复习模块，先闭卷回忆再看资料；练完补充题量、正确率、用时和最主要错因。</p></article>
-            <article class="role-card"><h3>老师</h3><p>把“基础差”拆成记忆、理解、识别和迁移四类问题，用隔日复测确认当天讲解是否真正留下。</p></article>
-            <article class="role-card"><h3>家长</h3><p>关注计划是否具体和复测是否完成，不以一次“顺畅”或一次遗忘评价能力，帮助保持稳定学习节奏。</p></article>
+          <div class="role-grid student-only">
+            <article class="role-card"><h3>学生</h3><p>每天写清具体复习模块，先闭卷回忆再看资料；练完补充题量、正确率、用时和最主要错因。</p><div class="encouragement"><strong>给自己的话</strong><p>今天做题状态变得顺畅，也能准确指出“容易忘记、运用生疏”。这说明你已经从笼统的不熟走向识别具体问题，下一步用隔日复测确认这些知识能否留下来。</p></div></article>
           </div>
         </section>
       </main>
@@ -3029,7 +3040,7 @@
           <div class="boundary-grid">
             <article class="mini-card fact"><span class="tag">积极变化</span><h3>训练开始形成可见产出</h3><ul><li>做题连续第二天保持“顺畅”。</li><li>能够完成四种化学大题的基本解答。</li><li>开始理解答题技巧和计算推导，而不只停留在听懂。</li><li>首次提供选择题正确率“过半”这一量化信息。</li></ul></article>
             <article class="mini-card signal"><span class="tag">当前瓶颈</span><h3>难题、猜测与审题形成同一得分风险</h3><ul><li>遇到难题仍难以持续推进。</li><li>部分正确来自“蒙中”，真实掌握可能被高估。</li><li>看题不仔细会遗漏条件或解题思路。</li><li>“思考与解决”未填写，问题尚未转化为下一步动作。</li></ul></article>
-            <article class="mini-card limit"><span class="tag">证据边界</span><h3>暂不能认定化学已经过关</h3><ul><li>没有两张卷的题数、具体正确率和用时。</li><li>没有区分独立完成、老师提示和猜测得分。</li><li>“四种大题基本解答”未说明各题完成到哪一步。</li><li>六天记录反映补习阶段变化，不能替代正式考试结果。</li></ul></article>
+            <article class="mini-card limit"><span class="tag">证据边界</span><h3>暂不能认定化学已经过关</h3><ul><li>没有两张卷的题数、具体正确率和用时。</li><li>没有区分独立完成、借助提示和猜测得分。</li><li>“四种大题基本解答”未说明各题完成到哪一步。</li><li>六天记录反映补习阶段变化，不能替代正式考试结果。</li></ul></article>
           </div>
         </section>
 
@@ -3080,10 +3091,8 @@
 
         <section class="section">
           <div class="section-head"><div><p class="section-kicker">07 · 协作方式</p><h2>用阶段验收决定科目切换，不凭一句“基本还行”</h2></div></div>
-          <div class="role-grid">
-            <article class="role-card"><h3>学生</h3><p>诚实区分会做与猜对，难题先写第一步；每天的问题栏后必须补一个可执行解决动作。</p></article>
-            <article class="role-card"><h3>老师</h3><p>建立四类大题独立完成表和选择题真实性统计，再据此决定化学维护频率与数学投入比例。</p></article>
-            <article class="role-card"><h3>家长</h3><p>认可阶段进步，但不急于用“学会了”或“还不行”定性；关注验收数据和科目切换后的稳定性。</p></article>
+          <div class="role-grid student-only">
+            <article class="role-card"><h3>学生</h3><p>诚实区分会做与猜对，难题先写第一步；每天的问题栏后必须补一个可执行解决动作。</p><div class="encouragement"><strong>给自己的话</strong><p>你已经能完成四类化学大题的基本解答，并且诚实承认选择题中存在猜测。把猜对和真正会做分开不会否定成绩，反而能让下一步训练更准确。</p></div></article>
           </div>
         </section>
       </main>
@@ -3217,19 +3226,123 @@
 
         <section class="section">
           <div class="section-head"><div><p class="section-kicker">07 · 协作方式</p><h2>允许换科后的短期吃力，但要求每天留下可比较的数据</h2></div></div>
-          <div class="role-grid">
-            <article class="role-card"><h3>学生</h3><p>先独立思考再看题解；把“没反应过来”改写成具体卡点，并记录前12题正确数和用时。</p></article>
-            <article class="role-card"><h3>老师</h3><p>首周以诊断为主，区分公式遗忘、题型识别和推导能力；控制二级结论数量，要求学生说明来源。</p></article>
-            <article class="role-card"><h3>家长</h3><p>不拿数学首日与化学第六天直接比较，关注连续几次数据是否改善，同时维持稳定作息与学习节奏。</p></article>
+          <div class="role-grid student-only">
+            <article class="role-card"><h3>学生</h3><p>先独立思考再看题解；把“没反应过来”改写成具体卡点，并记录前12题正确数和用时。</p><div class="encouragement"><strong>给自己的话</strong><p>换到数学的第一天，你仍能回忆部分高一解题步骤，并指出二级结论和公式推导的缺口。暂时吃力符合换科初期的记录，先建立正确率和用时基线再判断变化。</p></div></article>
           </div>
         </section>
       </main>
 
       <nav class="day-navigation" aria-label="日期切换">
         <a class="button" href="#2026-08-08">← 前一份：8月8日</a>
-        <div class="day-navigation-actions"><span class="button disabled" aria-disabled="true">暂无下一份 →</span></div>
+        <div class="day-navigation-actions"><a class="button" href="#2026-08-11">下一份：8月11日 →</a></div>
       </nav>
-      <footer class="combined-footer">本报告基于2026年8月3日至10日七份学习日报形成；8月9日暂无记录，仅作为阶段性分析。</footer>
+      <footer class="combined-footer">本报告为数学切换后的首份记录，后续结合8月11、13、14日记录继续观察。</footer>
+    </section>
+
+    <section class="route-view report-view" id="report0811" data-route="2026-08-11" hidden>
+      <nav class="report-toolbar" aria-label="8月11日报告操作"><a class="button" href="#home">← 返回分析主页</a><div class="report-toolbar-actions"><button class="button" type="button" data-copy="2026-08-11">复制核心结论</button><button class="button" type="button" data-print>打印 / 保存PDF</button></div></nav>
+      <section class="hero"><p class="eyebrow">阶段性学习分析 · 第8份记录</p><h1>8月11日<br>学习复盘分析</h1><p class="hero-lead">数学训练进入第二天。做题感受由“比较吃力”转为“有卡顿”，但专注和听课状态下降，同时看题启动、二级结论与答题规范成为明确卡点。</p><div class="meta-list"><span class="pill">日期：2026-08-11</span><span class="pill">科目：数学</span><span class="pill">学习时长：3小时</span><span class="pill">专注度：3分</span><span class="pill">累计样本：8份</span></div></section>
+      <main>
+        <section class="source-report-wrap" aria-labelledby="sourceReportTitle0811"><div class="source-report-heading"><div><p class="section-kicker">原始记录 · 页面还原</p><h2 id="sourceReportTitle0811">8月11日学习日报</h2></div><p class="source-report-note">根据学生当日截图转写；此处为静态展示，不修改原始表述。</p></div><article class="source-report" aria-label="2026年8月11日原始学习日报"><header class="source-report-header"><h3>一对一学习日报</h3><div class="source-report-meta"><span class="source-meta-chip">2026-08-11 周二</span><span class="source-meta-chip">数学</span><span class="source-meta-chip">学习时长：3小时</span></div><div class="source-subject"><span class="source-small-label">今日学习科目</span><div class="source-select">数学</div></div><p class="source-loaded">已载入当天记录</p></header><div class="source-form">
+          <section class="source-field"><h4>今日学习任务</h4><div class="source-value">向量方程和函数运算
+模考大题</div></section><section class="source-field"><h4>明日学习计划</h4><div class="source-value short">立体几何和三角函数</div></section><section class="source-field"><h4>今日做得好的地方</h4><div class="source-value">对本学期知识点没太大漏洞
+大题答题不规范</div></section><section class="source-field"><h4>今日遇到的问题</h4><div class="source-value short">看题没思路容易混淆二级结论和答题步骤</div></section><section class="source-field"><h4>思考与解决</h4><div class="source-value short">规范错题</div></section>
+          <section class="source-status"><h4>学习状态</h4><div class="source-status-row"><span class="source-status-label">今日专注度</span><div class="source-status-options" style="--choices: 5"><span class="source-choice">5分</span><span class="source-choice">4分</span><span class="source-choice selected">3分</span><span class="source-choice">2分</span><span class="source-choice">1分</span></div></div><div class="source-status-row"><span class="source-status-label">听课状态</span><div class="source-status-options" style="--choices: 4"><span class="source-choice">很好</span><span class="source-choice">较好</span><span class="source-choice selected">一般</span><span class="source-choice">较差</span></div></div><div class="source-status-row"><span class="source-status-label">做题状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">顺畅</span><span class="source-choice selected">有卡顿</span><span class="source-choice">比较吃力</span></div></div><div class="source-status-row"><span class="source-status-label">精神状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">充足</span><span class="source-choice selected">一般</span><span class="source-choice">疲惫</span></div></div></section><section class="source-field"><h4>自我评价</h4><div class="source-value short">（未填写）</div></section>
+        </div></article></section>
+        <section class="section" id="conclusion-0811"><div class="section-head"><div><p class="section-kicker">01 · 核心判断</p><h2>题目启动和规范输出比知识覆盖更值得优先处理</h2></div></div><p class="muted">学生写出“对本学期知识点没太大漏洞”，但同一份记录又指出看题没思路、混淆二级结论与答题步骤、大题答题不规范。两者可以同时成立：熟悉知识名称不等于能在陌生题中独立调用并规范表达。</p><div class="conclusion"><div class="conclusion-bar"></div><div><strong>阶段性结论</strong>与8月10日相比，做题状态从“比较吃力”改善为“有卡顿”，但专注4→3、听课较好→一般。下一步不宜继续扩充结论数量，应把一道大题拆成“题意转述—图形/条件—考点—第一步—规范书写”，并记录无提示完成到哪一步。</div></div></section>
+        <section class="section"><div class="section-head"><div><p class="section-kicker">02 · 连续记录对照</p><h2>做题体感略有改善，但投入状态同步下降</h2></div></div><div class="boundary-grid"><article class="mini-card fact"><span class="tag">积极变化</span><h3>从“比较吃力”转为“有卡顿”</h3><ul><li>8月10日做题为“比较吃力”，11日改善为“有卡顿”。</li><li>训练由简单题进入向量、函数运算和模考大题。</li><li>开始主动识别大题答题不规范。</li></ul></article><article class="mini-card signal"><span class="tag">同步下降</span><h3>专注与听课状态走低</h3><ul><li>专注度由4分降至3分。</li><li>听课由“较好”降为“一般”。</li><li>精神状态仍为一般，无法单凭量表判断原因。</li></ul></article><article class="mini-card limit"><span class="tag">证据边界</span><h3>体感改善不等于正确率提高</h3><ul><li>没有模考大题的题数、得分和用时。</li><li>没有记录外部提示次数。</li><li>“对知识点没太大漏洞”尚未经过闭卷测验验证。</li></ul></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">03 · 关键诊断</p><h2>当前断点位于“看懂题目”到“写出第一步”之间</h2></div></div><div class="learning-loop" aria-label="数学题目启动与规范输出链条"><article class="loop-card"><span class="loop-number">1</span><h3>转述题意</h3><p class="muted">用自己的话写清已知对象、限制条件和所求目标，确认不是停在表面阅读。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card focus"><span class="loop-number">2</span><h3>选择依据</h3><p>先调用基础定义和公式，再判断二级结论是否满足适用条件，避免把结论名称当作解题步骤。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card"><span class="loop-number">3</span><h3>规范输出</h3><p class="muted">每一步写明等式、条件与推导依据，完成后按评分点检查缺项。</p></article></div><p class="note">如果学生能口头说出考点，却写不出第一步，重点训练输出；如果连考点都无法判断，则先补题型识别，不能只要求“认真一点”。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">04 · 全面观察</p><h2>知识熟悉感、题型识别和规范得分需要分开评估</h2></div></div><div class="two-col"><article class="insight-card"><strong>值得肯定</strong><ul><li>没有回避模考大题，愿意进入综合题训练。</li><li>能察觉答题不规范，而不是只归因于粗心。</li><li>明日计划具体到立体几何和三角函数。</li><li>做题状态较首日有所改善。</li></ul></article><article class="insight-card"><strong>需要修正</strong><ul><li>“本学期知识点没太大漏洞”属于自我感受，需闭卷小测验证。</li><li>“规范错题”过于宽泛，无法指导下一次练习。</li><li>混淆二级结论和答题步骤，说明结论来源与使用条件尚未稳定。</li><li>专注与听课状态下降，应记录发生在哪个时段和题型。</li></ul></article></div><div class="note"><strong>字段解释：</strong>“大题答题不规范”被学生写在“做得好的地方”，本分析保留原始位置，但按内容性质将其视为待改进项，不把它误读成优势。</div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">05 · 下一次学习</p><h2>围绕一道立体几何题完成从识题到规范得分的闭环</h2></div></div><div class="step-list"><article class="step"><span class="step-time">15分钟</span><div class="step-content"><h3>闭卷基础提取</h3><p>写出本节所需定义、基础公式和常用结论，并标注每个二级结论的条件。</p></div></article><article class="step"><span class="step-time">20分钟</span><div class="step-content"><h3>题意转述与画图</h3><p>只看题目，圈出对象和条件，补全图形并写出所求，不急于计算。</p></div></article><article class="step"><span class="step-time">35分钟</span><div class="step-content"><h3>独立分步作答</h3><p>记录从读题到写出第一步的时间；卡住三分钟后，只接受一级提示。</p></div></article><article class="step"><span class="step-time">20分钟</span><div class="step-content"><h3>评分点对照</h3><p>对照标准答案标出缺失条件、跳步、符号和结论误用。</p></div></article><article class="step"><span class="step-time">20分钟</span><div class="step-content"><h3>同类变式</h3><p>更换一个条件重新完成，检验是否只记住原题过程。</p></div></article><article class="step"><span class="step-time">10分钟</span><div class="step-content"><h3>错题四栏</h3><p>填写卡点、所需知识、修正动作和隔日复测日期。</p></div></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">06 · 后续观察</p><h2>未来三次数学学习固定记录五组事实</h2></div></div><table class="review-table"><thead><tr><th>观察主题</th><th>需要记录的事实</th></tr></thead><tbody><tr><td>大题启动</td><td>从读题到写出有效第一步所需时间，以及卡住的位置。</td></tr><tr><td>结论使用</td><td>使用了哪个二级结论，能否说明来源和适用条件。</td></tr><tr><td>规范得分</td><td>因缺条件、跳步、符号或书写造成的失分数量。</td></tr><tr><td>独立程度</td><td>完全独立、一级提示、完整讲解三种情况分别统计。</td></tr><tr><td>状态变化</td><td>专注下降发生在什么时段、题型及任务难度下。</td></tr></tbody></table><p class="note">若第一步启动时间下降而规范失分不降，重点转向书写；若启动仍慢，则继续训练题意表征和题型识别。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">07 · 协作方式</p><h2>允许卡顿，但每次卡顿都要留下可诊断证据</h2></div></div><div class="role-grid student-only"><article class="role-card"><h3>学生</h3><p>先写已知、所求和第一步再求助；错题中标明具体卡点，不只写“没思路”。</p><div class="encouragement"><strong>给自己的话</strong><p>做题体验已经从“比较吃力”改善为“有卡顿”，你也开始识别答题不规范和结论混淆。进步不等于已经稳定，但说明问题正在变得更具体、更容易处理。</p></div></article></div></section>
+      </main><nav class="day-navigation" aria-label="日期切换"><a class="button" href="#2026-08-10">← 前一份：8月10日</a><div class="day-navigation-actions"><a class="button" href="#2026-08-13">下一份：8月13日 →</a></div></nav><footer class="combined-footer">8月12日无课，因此下一份有效日报为8月13日。</footer>
+    </section>
+
+    <section class="route-view report-view" id="report0813" data-route="2026-08-13" hidden>
+      <nav class="report-toolbar" aria-label="8月13日报告操作"><a class="button" href="#home">← 返回分析主页</a><div class="report-toolbar-actions"><button class="button" type="button" data-copy="2026-08-13">复制核心结论</button><button class="button" type="button" data-print>打印 / 保存PDF</button></div></nav>
+      <section class="hero"><p class="eyebrow">阶段性学习分析 · 第9份记录</p><h1>8月13日<br>学习复盘分析</h1><p class="hero-lead">本日报截图原标8月12日；因8月12日无课，按确认校正为8月13日。训练内容扩展到三角函数、圆锥曲线和立体几何，但函数图像与题意建模仍是明显断点。</p><div class="meta-list"><span class="pill">校正日期：2026-08-13</span><span class="pill">科目：数学</span><span class="pill">学习时长：3小时</span><span class="pill">专注度：3分</span><span class="pill">8月12日无课</span></div></section>
+      <main>
+        <section class="source-report-wrap" aria-labelledby="sourceReportTitle0813"><div class="source-report-heading"><div><p class="section-kicker">原始记录 · 日期已校正</p><h2 id="sourceReportTitle0813">8月13日学习日报</h2></div><p class="source-report-note">截图显示8月12日，按“12日无课、后续顺延一天”的确认规则校正为8月13日。</p></div><article class="source-report" aria-label="2026年8月13日原始学习日报"><header class="source-report-header"><h3>一对一学习日报</h3><div class="source-report-meta"><span class="source-meta-chip">2026-08-13 周四</span><span class="source-meta-chip">数学</span><span class="source-meta-chip">学习时长：3小时</span></div><div class="source-subject"><span class="source-small-label">今日学习科目</span><div class="source-select">数学</div></div><p class="source-loaded">已载入校正后记录</p></header><div class="source-form">
+          <section class="source-field"><h4>今日学习任务</h4><div class="source-value">高考原题大题
+三角函数和圆锥曲线方程
+立体几何二级结论</div></section><section class="source-field"><h4>明日学习计划</h4><div class="source-value">选填基础
+概率和统计</div></section><section class="source-field"><h4>今日做得好的地方</h4><div class="source-value">草稿清晰分布做答
+容易猜对答案</div></section><section class="source-field"><h4>今日遇到的问题</h4><div class="source-value">对二元方程和函数的知识点不熟
+不会依据题意画图</div></section><section class="source-field"><h4>思考与解决</h4><div class="source-value">对齐函数图像和基本知识联系
+自己推导三角函数和立体几何公式</div></section>
+          <section class="source-status"><h4>学习状态</h4><div class="source-status-row"><span class="source-status-label">今日专注度</span><div class="source-status-options" style="--choices: 5"><span class="source-choice">5分</span><span class="source-choice">4分</span><span class="source-choice selected">3分</span><span class="source-choice">2分</span><span class="source-choice">1分</span></div></div><div class="source-status-row"><span class="source-status-label">听课状态</span><div class="source-status-options" style="--choices: 4"><span class="source-choice">很好</span><span class="source-choice">较好</span><span class="source-choice selected">一般</span><span class="source-choice">较差</span></div></div><div class="source-status-row"><span class="source-status-label">做题状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">顺畅</span><span class="source-choice selected">有卡顿</span><span class="source-choice">比较吃力</span></div></div><div class="source-status-row"><span class="source-status-label">精神状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">充足</span><span class="source-choice selected">一般</span><span class="source-choice">疲惫</span></div></div></section><section class="source-field"><h4>自我评价</h4><div class="source-value short">（未填写）</div></section>
+        </div></article></section>
+        <section class="section" id="conclusion-0813"><div class="section-head"><div><p class="section-kicker">01 · 核心判断</p><h2>公式推导意识增强，但题意到图像的转换仍薄弱</h2></div></div><p class="muted">学生主动提出连接函数图像与基础知识，并自己推导三角函数和立体几何公式，这是从背结论转向理解来源的积极变化；但“不熟二元方程和函数”“不会依据题意画图”说明建模入口尚未稳定。</p><div class="conclusion"><div class="conclusion-bar"></div><div><strong>阶段性结论</strong>当天内容跨度较大，专注、听课和做题状态与8月11日相同。下一步应缩小训练面，用“文字条件—代数关系—图像/几何对象—目标量”四步完成2—3道代表题。学生写的“容易猜对答案”不能作为掌握证据，需单独记录猜测题并扣除后计算真实正确率。</div></div></section>
+        <section class="section"><div class="section-head"><div><p class="section-kicker">02 · 连续记录对照</p><h2>状态与8月11日持平，解决思路开始变得具体</h2></div></div><div class="boundary-grid"><article class="mini-card fact"><span class="tag">保持不变</span><h3>量表连续两份相同</h3><ul><li>专注均为3分。</li><li>听课均为一般。</li><li>做题均为有卡顿，精神均为一般。</li></ul></article><article class="mini-card signal"><span class="tag">积极变化</span><h3>从“规范错题”走向公式来源</h3><ul><li>提出连接函数图像与基础知识。</li><li>主动推导三角函数和立体几何公式。</li><li>开始关注草稿组织与分步表达。</li></ul></article><article class="mini-card limit"><span class="tag">持续风险</span><h3>内容扩张快于基础稳固</h3><ul><li>同时覆盖三角、圆锥曲线和立体几何。</li><li>二元方程和函数仍不熟。</li><li>不会依题意画图，建模入口未打通。</li></ul></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">03 · 关键诊断</p><h2>“不会画图”本质上是题意表征链条没有建立</h2></div></div><div class="learning-loop" aria-label="文字条件转化为数学模型的链条"><article class="loop-card"><span class="loop-number">1</span><h3>文字条件</h3><p class="muted">圈出对象、变量、范围、关系与所求，把长句拆成短条件。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card focus"><span class="loop-number">2</span><h3>代数与图像</h3><p>把条件写成方程、不等式或几何关系，再画出能表达关键关系的草图。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card"><span class="loop-number">3</span><h3>方法选择</h3><p class="muted">根据图像和目标判断使用函数性质、三角关系、向量或几何定理。</p></article></div><p class="note">若学生在第二步失败，继续背二级结论通常不能解决问题；应先练条件翻译和草图表达。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">04 · 全面观察</p><h2>推导意识值得肯定，猜测得分必须单独剥离</h2></div></div><div class="two-col"><article class="insight-card"><strong>值得肯定</strong><ul><li>开始从公式来源而不是结论记忆入手。</li><li>能指出函数和二元方程的具体缺口。</li><li>明日计划回到选填基础、概率和统计，方向更聚焦。</li><li>草稿组织意识可能有助于减少步骤混乱。</li></ul></article><article class="insight-card"><strong>需要警惕</strong><ul><li>“容易猜对答案”会高估正确率和掌握程度。</li><li>跨越多个大题模块可能导致每个模块训练过浅。</li><li>状态连续两份没有改善，需要观察任务难度与疲劳。</li><li>自我评价未填写，缺少对当天整体过程的总结。</li></ul></article></div><div class="note"><strong>证据边界：</strong>“草稿清晰分布做答”为截图原文，本分析不擅自改写；其实际含义需结合草稿照片或后续同类题表现确认。</div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">05 · 下一次学习</p><h2>用选填基础和概率统计建立可量化基线</h2></div></div><div class="step-list"><article class="step"><span class="step-time">15分钟</span><div class="step-content"><h3>基础提取</h3><p>闭卷写出概率统计核心概念、公式及常见条件，标出不会的部分。</p></div></article><article class="step"><span class="step-time">30分钟</span><div class="step-content"><h3>选填限时基线</h3><p>完成固定数量基础题，记录总用时、独立正确、排除后选择和纯猜。</p></div></article><article class="step"><span class="step-time">25分钟</span><div class="step-content"><h3>文字转图训练</h3><p>选2道函数或圆锥曲线题，只做条件翻译、列式和画图，不急于求解。</p></div></article><article class="step"><span class="step-time">30分钟</span><div class="step-content"><h3>完整解题</h3><p>从草图出发选择方法并规范作答，记录首次有效思路出现的时间。</p></div></article><article class="step"><span class="step-time">15分钟</span><div class="step-content"><h3>扣除猜测复盘</h3><p>重算真实正确率，找出“猜对但不会解释”的题目。</p></div></article><article class="step"><span class="step-time">15分钟</span><div class="step-content"><h3>隔日任务</h3><p>安排一题无提示重做，检验公式推导与画图能力是否保留。</p></div></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">06 · 后续观察</p><h2>用建模行为而不只用答案判断进步</h2></div></div><table class="review-table"><thead><tr><th>观察主题</th><th>需要记录的事实</th></tr></thead><tbody><tr><td>条件翻译</td><td>能否把文字条件独立写成方程、范围或几何关系。</td></tr><tr><td>有效画图</td><td>是否画出关键对象、交点、方向和限制，画图用时多少。</td></tr><tr><td>公式来源</td><td>能否解释三角或立体几何公式从何而来及何时可用。</td></tr><tr><td>真实正确率</td><td>独立正确数、猜测正确数和扣除猜测后的比例。</td></tr><tr><td>模块负荷</td><td>单次学习覆盖几个模块，每个模块是否完成变式与隔日复测。</td></tr></tbody></table><p class="note">若画图能力改善后仍不会选择方法，再训练题型识别；若图都画不出来，应继续补基础关系，不宜直接追求难题数量。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">07 · 协作方式</p><h2>把“猜对”转化为诚实、可学习的数据</h2></div></div><div class="role-grid student-only"><article class="role-card"><h3>学生</h3><p>每道选择题标记确定、排除或猜测；即使猜对也要补写依据，不把幸运当掌握。</p><div class="encouragement"><strong>给自己的话</strong><p>你愿意推导公式，也能指出函数、二元方程和画图方面的具体缺口，这比只记结论更有价值。承认猜测不会削弱进步，它能帮助你看清真正需要补上的部分。</p></div></article></div></section>
+      </main><nav class="day-navigation" aria-label="日期切换"><a class="button" href="#2026-08-11">← 前一份：8月11日</a><div class="day-navigation-actions"><a class="button" href="#2026-08-14">下一份：8月14日 →</a></div></nav><footer class="combined-footer">日期已按8月12日无课的事实校正；不将无课日计入学习样本。</footer>
+    </section>
+
+    <section class="route-view report-view" id="report0814" data-route="2026-08-14" hidden>
+      <nav class="report-toolbar" aria-label="8月14日报告操作"><a class="button" href="#home">← 返回分析主页</a><div class="report-toolbar-actions"><button class="button" type="button" data-copy="2026-08-14">复制核心结论</button><button class="button" type="button" data-print>打印 / 保存PDF</button></div></nav>
+      <section class="hero"><p class="eyebrow">阶段性学习分析 · 第10份记录</p><h1>8月14日<br>学习复盘分析</h1><p class="hero-lead">本日报截图原标8月13日，校正为8月14日。专注和听课状态回升，但精神疲惫、做题比较吃力，说明表面投入恢复尚未同步转化为速度和稳定产出。</p><div class="meta-list"><span class="pill">校正日期：2026-08-14</span><span class="pill">科目：数学</span><span class="pill">学习时长：3小时</span><span class="pill">专注度：4分</span><span class="pill">精神状态：疲惫</span></div></section>
+      <main>
+        <section class="source-report-wrap" aria-labelledby="sourceReportTitle0814"><div class="source-report-heading"><div><p class="section-kicker">原始记录 · 日期已校正</p><h2 id="sourceReportTitle0814">8月14日学习日报</h2></div><p class="source-report-note">截图显示8月13日，按确认规则顺延为8月14日。</p></div><article class="source-report" aria-label="2026年8月14日原始学习日报"><header class="source-report-header"><h3>一对一学习日报</h3><div class="source-report-meta"><span class="source-meta-chip">2026-08-14 周五</span><span class="source-meta-chip">数学</span><span class="source-meta-chip">学习时长：3小时</span></div><div class="source-subject"><span class="source-small-label">今日学习科目</span><div class="source-select">数学</div></div><p class="source-loaded">已载入校正后记录</p></header><div class="source-form">
+          <section class="source-field"><h4>今日学习任务</h4><div class="source-value">复习并推导基础公式
+整理错题</div></section><section class="source-field"><h4>明日学习计划</h4><div class="source-value short">（未填写）</div></section><section class="source-field"><h4>今日做得好的地方</h4><div class="source-value">没有忘清以前的错误
+错题正确率达百分之六十</div></section><section class="source-field"><h4>今日遇到的问题</h4><div class="source-value">概率知识点漏洞大
+做题速度太慢</div></section><section class="source-field"><h4>思考与解决</h4><div class="source-value short">举一反三找类似题目做熟</div></section>
+          <section class="source-status"><h4>学习状态</h4><div class="source-status-row"><span class="source-status-label">今日专注度</span><div class="source-status-options" style="--choices: 5"><span class="source-choice">5分</span><span class="source-choice selected">4分</span><span class="source-choice">3分</span><span class="source-choice">2分</span><span class="source-choice">1分</span></div></div><div class="source-status-row"><span class="source-status-label">听课状态</span><div class="source-status-options" style="--choices: 4"><span class="source-choice">很好</span><span class="source-choice selected">较好</span><span class="source-choice">一般</span><span class="source-choice">较差</span></div></div><div class="source-status-row"><span class="source-status-label">做题状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">顺畅</span><span class="source-choice">有卡顿</span><span class="source-choice selected">比较吃力</span></div></div><div class="source-status-row"><span class="source-status-label">精神状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">充足</span><span class="source-choice">一般</span><span class="source-choice selected">疲惫</span></div></div></section><section class="source-field"><h4>自我评价</h4><div class="source-value short">被情绪和环境左右状态</div></section>
+        </div></article></section>
+        <section class="section" id="conclusion-0814"><div class="section-head"><div><p class="section-kicker">01 · 核心判断</p><h2>60%是阶段信号，不是稳定掌握结论</h2></div></div><p class="muted">学生开始复习、推导公式并整理错题，同时首次给出“错题正确率60%”。但没有题量、难度、用时、提示次数和猜测情况，且当天自报概率漏洞大、速度慢、精神疲惫，因此60%只能作为后续对照基线。</p><div class="conclusion"><div class="conclusion-bar"></div><div><strong>阶段性结论</strong>专注3→4、听课一般→较好，是积极变化；做题却从“有卡顿”转为“比较吃力”，并出现疲惫及情绪环境影响。下一步应在相同题量和难度下记录正确率与用时，将知识漏洞、速度问题和状态影响分开观察。</div></div></section>
+        <section class="section"><div class="section-head"><div><p class="section-kicker">02 · 四份数学记录对照</p><h2>专注度回升，但做题体验没有同步改善</h2></div></div><div class="trend-row" aria-label="四份数学记录专注度"><div class="trend-point"><strong>4</strong><span>8月10日</span></div><div class="trend-point"><strong>3</strong><span>8月11日</span></div><div class="trend-point"><strong>3</strong><span>8月13日</span></div><div class="trend-point"><strong>4</strong><span>8月14日</span></div></div><div class="boundary-grid"><article class="mini-card fact"><span class="tag">积极变化</span><h3>开始形成错题和公式复盘</h3><ul><li>从不会推导转向主动推导基础公式。</li><li>从泛泛“规范错题”转向整理错题和找类似题。</li><li>首次给出60%的量化结果。</li></ul></article><article class="mini-card signal"><span class="tag">持续问题</span><h3>速度和独立调用仍受限</h3><ul><li>做题状态为吃力、有卡顿、有卡顿、吃力。</li><li>概率知识点被明确识别为较大漏洞。</li><li>专注回升并未直接带来做题顺畅。</li></ul></article><article class="mini-card limit"><span class="tag">状态变量</span><h3>疲惫与情绪环境同时出现</h3><ul><li>精神状态首次在数学阶段降为疲惫。</li><li>学生自述会被情绪和环境左右。</li><li>尚无睡眠、学习时段和环境事件记录。</li></ul></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">03 · 关键诊断</p><h2>需要区分三种“慢”：知识提取慢、方法选择慢和执行计算慢</h2></div></div><div class="learning-loop" aria-label="数学做题速度诊断链条"><article class="loop-card"><span class="loop-number">1</span><h3>知识提取</h3><p class="muted">读题后能否迅速写出相关概念、公式和条件；若不能，先补闭卷提取。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card focus"><span class="loop-number">2</span><h3>方法选择</h3><p>公式知道却不知怎么用，说明题型识别与条件匹配不足，应训练第一步。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card"><span class="loop-number">3</span><h3>运算与书写</h3><p class="muted">思路正确但完成慢，再针对计算熟练度、草稿组织和规范表达限时训练。</p></article></div><p class="note">若不先定位慢在哪一环节，单纯增加题量可能同时增加疲劳和挫败，却无法解决速度问题。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">04 · 全面观察</p><h2>60%提供了基线，但还不能说明错题系统已经有效</h2></div></div><div class="two-col"><article class="insight-card"><strong>值得肯定</strong><ul><li>主动复习并推导基础公式，回应了前几天公式理解不足。</li><li>开始整理错题，并计划找类似题举一反三。</li><li>能明确指出概率漏洞与速度问题。</li><li>能够觉察情绪和环境影响，而非完全忽略状态。</li></ul></article><article class="insight-card"><strong>需要补足</strong><ul><li>60%需说明题量、题型、难度和是否独立完成。</li><li>“没有忘清以前的错误”为截图原文，实际含义需要学生确认。</li><li>明日计划未填写，错题复盘尚未形成下一次任务。</li><li>疲惫时继续大量刷题可能降低学习质量。</li></ul></article></div><div class="note"><strong>证据边界：</strong>本日正确率只出现一次，且不是统一测验数据；不能据此判断数学整体正确率达到60%。</div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">05 · 下一次学习</p><h2>先诊断概率漏洞，再用同类题验证迁移与速度</h2></div></div><div class="step-list"><article class="step"><span class="step-time">10分钟</span><div class="step-content"><h3>状态检查</h3><p>记录睡眠、疲劳程度与学习环境；若明显疲惫，先安排低负荷提取。</p></div></article><article class="step"><span class="step-time">20分钟</span><div class="step-content"><h3>概率闭卷小测</h3><p>写出核心概念、公式、样本空间和条件，定位具体遗漏。</p></div></article><article class="step"><span class="step-time">30分钟</span><div class="step-content"><h3>首题慢做</h3><p>逐步说明依据，记录知识提取、方法选择和运算分别耗时。</p></div></article><article class="step"><span class="step-time">25分钟</span><div class="step-content"><h3>同类题限时</h3><p>在相同考点下完成变式题，比较正确率和用时。</p></div></article><article class="step"><span class="step-time">20分钟</span><div class="step-content"><h3>错题迁移</h3><p>不看原答案，写出错因、关键转折和可迁移方法。</p></div></article><article class="step"><span class="step-time">15分钟</span><div class="step-content"><h3>隔日复测安排</h3><p>指定一题次日独立完成，用相同标准验收是否真正做熟。</p></div></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">06 · 后续观察</p><h2>把正确率、速度和状态放在同一张记录表中</h2></div></div><table class="review-table"><thead><tr><th>观察主题</th><th>需要记录的事实</th></tr></thead><tbody><tr><td>正确率口径</td><td>题数、模块、难度、独立正确、提示后正确和猜测正确。</td></tr><tr><td>速度结构</td><td>读题、回忆公式、选择方法、运算和书写各阶段用时。</td></tr><tr><td>概率缺口</td><td>具体不会的概念、公式或条件，而不是只写“漏洞大”。</td></tr><tr><td>错题迁移</td><td>同类变式和隔日复测是否仍能独立完成。</td></tr><tr><td>状态影响</td><td>疲劳、情绪或环境变化前后，同类题表现是否明显不同。</td></tr></tbody></table><p class="note">连续三次使用相同口径后，才能判断60%是在上升、停滞还是受题目难度影响。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">07 · 协作方式</p><h2>既处理知识漏洞，也保护疲惫状态下的学习质量</h2></div></div><div class="role-grid student-only"><article class="role-card"><h3>学生</h3><p>把“速度慢”标记到具体步骤；疲惫或受环境影响时如实记录，不用模糊自责代替分析。</p><div class="encouragement"><strong>给自己的话</strong><p>你已经开始推导公式、整理错题，并留下了60%的阶段数据，也能觉察情绪和环境对状态的影响。这些都是有效信息；先恢复状态，再用同一口径判断正确率和速度。</p></div></article></div></section>
+      </main><nav class="day-navigation" aria-label="日期切换"><a class="button" href="#2026-08-13">← 前一份：8月13日</a><div class="day-navigation-actions"><a class="button" href="#2026-08-15">下一份：8月15日 →</a></div></nav><footer class="combined-footer">截图原标8月13日，已按无课顺延规则校正为8月14日。</footer>
+    </section>
+
+    <section class="route-view report-view" id="report0815" data-route="2026-08-15" hidden>
+      <nav class="report-toolbar" aria-label="8月15日报告操作"><a class="button" href="#home">← 返回分析主页</a><div class="report-toolbar-actions"><button class="button" type="button" data-copy="2026-08-15">复制核心结论</button><button class="button" type="button" data-print>打印 / 保存PDF</button></div></nav>
+      <section class="hero"><p class="eyebrow">阶段性学习分析 · 第11份记录</p><h1>8月15日<br>学习复盘分析</h1><p class="hero-lead">本日报截图原标8月14日，校正为8月15日。学生重新切回化学，选择题自报七成，但规范书写、知识点不清和猜测得分再次出现，且当天精神疲惫。</p><div class="meta-list"><span class="pill">校正日期：2026-08-15</span><span class="pill">科目：化学</span><span class="pill">学习时长：3小时</span><span class="pill">专注度：3分</span><span class="pill">选择准确率：自报七成</span></div></section>
+      <main>
+        <section class="source-report-wrap" aria-labelledby="sourceReportTitle0815"><div class="source-report-heading"><div><p class="section-kicker">原始记录 · 日期已校正</p><h2 id="sourceReportTitle0815">8月15日学习日报</h2></div><p class="source-report-note">截图显示8月14日，按确认规则顺延为8月15日。</p></div><article class="source-report" aria-label="2026年8月15日原始学习日报"><header class="source-report-header"><h3>一对一学习日报</h3><div class="source-report-meta"><span class="source-meta-chip">2026-08-15 周六</span><span class="source-meta-chip">化学</span><span class="source-meta-chip">学习时长：3小时</span></div><div class="source-subject"><span class="source-small-label">今日学习科目</span><div class="source-select">化学</div></div><p class="source-loaded">已载入校正后记录</p></header><div class="source-form">
+          <section class="source-field"><h4>今日学习任务</h4><div class="source-value">复习化学熵和焓
+练习原理大题</div></section><section class="source-field"><h4>明日学习计划</h4><div class="source-value short">主练计算</div></section><section class="source-field"><h4>今日做得好的地方</h4><div class="source-value">化学方程式书写大致原理熟悉
+选择准确率七成</div></section><section class="source-field"><h4>今日遇到的问题</h4><div class="source-value">方程式条件书写不规范
+选择题知识点不清晰多蒙的</div></section><section class="source-field"><h4>思考与解决</h4><div class="source-value short">（未填写）</div></section>
+          <section class="source-status"><h4>学习状态</h4><div class="source-status-row"><span class="source-status-label">今日专注度</span><div class="source-status-options" style="--choices: 5"><span class="source-choice">5分</span><span class="source-choice">4分</span><span class="source-choice selected">3分</span><span class="source-choice">2分</span><span class="source-choice">1分</span></div></div><div class="source-status-row"><span class="source-status-label">听课状态</span><div class="source-status-options" style="--choices: 4"><span class="source-choice">很好</span><span class="source-choice">较好</span><span class="source-choice selected">一般</span><span class="source-choice">较差</span></div></div><div class="source-status-row"><span class="source-status-label">做题状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">顺畅</span><span class="source-choice selected">有卡顿</span><span class="source-choice">比较吃力</span></div></div><div class="source-status-row"><span class="source-status-label">精神状态</span><div class="source-status-options" style="--choices: 3"><span class="source-choice">充足</span><span class="source-choice">一般</span><span class="source-choice selected">疲惫</span></div></div></section><section class="source-field"><h4>自我评价</h4><div class="source-value short">（未填写）</div></section>
+        </div></article></section>
+        <section class="section" id="conclusion-0815"><div class="section-head"><div><p class="section-kicker">01 · 核心判断</p><h2>跨科回访说明化学“顺畅”尚未形成稳定保持</h2></div></div><p class="muted">8月7日至8日化学做题状态曾连续为“顺畅”；数天数学训练后回到化学，8月15日变为“有卡顿”，专注3分、听课一般、精神疲惫。当天自报选择准确率七成，但又明确“多蒙的”，因此不能直接与此前正确率比较。</p><div class="conclusion"><div class="conclusion-bar"></div><div><strong>阶段性结论</strong>前期化学训练有效果，但规范书写、条件提取和扣除猜测后的真实正确率仍是核心验收点。下一次“主练计算”前，应先用短时闭卷提取熵焓关系和高频方程式条件，再做限时题并区分确定会做、排除选择与纯猜。</div></div></section>
+        <section class="section"><div class="section-head"><div><p class="section-kicker">02 · 化学前后对照</p><h2>一周前的“顺畅”在跨科后没有完全保持</h2></div></div><div class="boundary-grid"><article class="mini-card fact"><span class="tag">仍有保留</span><h3>原理框架并未完全消失</h3><ul><li>能够复习熵和焓并进入原理大题。</li><li>自述方程式书写的大致原理熟悉。</li><li>选择题自报准确率七成。</li></ul></article><article class="mini-card signal"><span class="tag">明显回落</span><h3>状态与做题体验下降</h3><ul><li>8月8日专注4分、做题顺畅；15日为3分、有卡顿。</li><li>听课由较好降为一般。</li><li>精神由一般降为疲惫。</li></ul></article><article class="mini-card limit"><span class="tag">真实掌握</span><h3>七成不能直接采用</h3><ul><li>学生同时写明选择题“多蒙的”。</li><li>没有题数、模块、用时和猜测数量。</li><li>方程式条件不规范仍可能直接失分。</li></ul></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">03 · 关键诊断</p><h2>化学维护需要同时验收知识提取、规范书写和计算执行</h2></div></div><div class="learning-loop" aria-label="化学原理题稳定得分链条"><article class="loop-card"><span class="loop-number">1</span><h3>概念与关系</h3><p class="muted">闭卷提取熵、焓、反应方向和条件，确认不是只看题时熟悉。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card focus"><span class="loop-number">2</span><h3>规范表达</h3><p>方程式、反应条件、状态符号和单位必须完整，避免懂原理却丢规范分。</p></article><div class="arrow" aria-hidden="true">→</div><article class="loop-card"><span class="loop-number">3</span><h3>计算与检验</h3><p class="muted">按已知量、关系式、代入和单位逐步计算，并检查数量级与合理性。</p></article></div><p class="note">选择题的猜测问题与大题规范问题指向同一风险：答案可能正确，但过程和知识连接不够稳定。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">04 · 全面观察</p><h2>跨科回访提供了保持性证据，也暴露状态管理问题</h2></div></div><div class="two-col"><article class="insight-card"><strong>值得肯定</strong><ul><li>数学阶段后仍安排化学回访，避免完全中断。</li><li>能指出熵、焓和原理大题等具体内容。</li><li>知道下一步需要主练计算。</li><li>能够承认选择题中存在猜测，没有把七成全部归为掌握。</li></ul></article><article class="insight-card"><strong>需要调整</strong><ul><li>“大致原理熟悉”需用闭卷方程式和条件验证。</li><li>“主练计算”应先明确计算卡在公式、代入、单位还是运算。</li><li>思考与解决、自我评价均未填写，缺少问题到行动的闭环。</li><li>连续两份记录精神疲惫，需要检查作息和任务负荷。</li></ul></article></div><div class="note"><strong>证据边界：</strong>8月8日和15日之间学科、任务和状态不同，不能把变化全部归因于遗忘；需要状态恢复后的同类题复测。</div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">05 · 下一次学习</p><h2>先恢复提取，再训练计算，并重算真实正确率</h2></div></div><div class="step-list"><article class="step"><span class="step-time">10分钟</span><div class="step-content"><h3>状态与目标确认</h3><p>记录睡眠和疲劳，明确本次计算训练的题型、题数与目标。</p></div></article><article class="step"><span class="step-time">15分钟</span><div class="step-content"><h3>闭卷提取</h3><p>写出熵、焓、反应方向关系和适用条件，再对照课本补缺。</p></div></article><article class="step"><span class="step-time">20分钟</span><div class="step-content"><h3>方程式规范</h3><p>集中订正条件、符号、状态和单位，制作个人检查清单。</p></div></article><article class="step"><span class="step-time">35分钟</span><div class="step-content"><h3>限时计算</h3><p>按“已知—关系—代入—单位—检查”分步完成，记录各环节用时。</p></div></article><article class="step"><span class="step-time">20分钟</span><div class="step-content"><h3>选择题验真</h3><p>把确定会做、排除后选择和纯猜分开统计，计算扣除猜测后的比例。</p></div></article><article class="step"><span class="step-time">15分钟</span><div class="step-content"><h3>无提示复现</h3><p>选择一题合上答案重新完成，并安排隔日再测。</p></div></article></div></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">06 · 后续观察</p><h2>未来三次化学维护固定记录这些数据</h2></div></div><table class="review-table"><thead><tr><th>观察主题</th><th>需要记录的事实</th></tr></thead><tbody><tr><td>闭卷提取</td><td>熵焓关系、方程式和反应条件能否不看资料写出。</td></tr><tr><td>规范错误</td><td>条件、状态、符号、单位和有效数字分别错几处。</td></tr><tr><td>计算卡点</td><td>慢在理解题意、选公式、列式、代入还是运算。</td></tr><tr><td>真实正确率</td><td>确定会做、排除选择、纯猜及扣除猜测后的比例。</td></tr><tr><td>保持性</td><td>隔日和隔周同类题能否独立复现。</td></tr><tr><td>状态影响</td><td>精神恢复后，同等难度题的用时和错误是否改善。</td></tr></tbody></table><p class="note">如果状态恢复后规范错误仍多，应建立强制检查流程；如果错误随疲劳明显波动，则同时调整任务时段和负荷。</p></section>
+
+        <section class="section"><div class="section-head"><div><p class="section-kicker">07 · 协作方式</p><h2>不因“七成”过度乐观，也不因回落否定前期进步</h2></div></div><div class="role-grid student-only"><article class="role-card"><h3>学生</h3><p>诚实标记猜测题，方程式写完后按条件清单检查；把计算卡点写到具体步骤。</p><div class="encouragement"><strong>给自己的话</strong><p>数学训练后你仍安排了化学回访，也能诚实区分七成正确率中的猜测成分。跨科保持和真实记录都值得肯定，下一步只需把规范书写与计算卡点逐项验证。</p></div></article></div></section>
+      </main><nav class="day-navigation" aria-label="日期切换"><a class="button" href="#2026-08-14">← 前一份：8月14日</a><div class="day-navigation-actions"><span class="button disabled" aria-disabled="true">暂无下一份 →</span></div></nav><footer class="combined-footer">截图原标8月14日，已按无课顺延规则校正为8月15日；本页不把猜测正确等同于稳定掌握。</footer>
     </section>
   </div>
 
@@ -3245,7 +3358,11 @@
       '2026-08-06': '8月6日学习复盘分析',
       '2026-08-07': '8月7日学习复盘分析',
       '2026-08-08': '8月8日学习复盘分析',
-      '2026-08-10': '8月10日学习复盘分析'
+      '2026-08-10': '8月10日学习复盘分析',
+      '2026-08-11': '8月11日学习复盘分析',
+      '2026-08-13': '8月13日学习复盘分析',
+      '2026-08-14': '8月14日学习复盘分析',
+      '2026-08-15': '8月15日学习复盘分析'
     };
 
     const summaries = {
@@ -3255,7 +3372,11 @@
       '2026-08-06': '8月6日学习复盘阶段性结论：\n与8月5日报相比，专注、听课和精神状态均有所回升，但做题连续第三天为“有卡顿”。学生已能按思路推导、运用基本技巧并看懂计算题，当前瓶颈更集中在官能团推导、方程式规范、条件提取和难题启动。下一步应缩小训练面，围绕规范书写、信息标记、独立重做和三分钟难题启动形成闭环，同时继续记录睡眠与早餐。“比昨天好一点”与量表状态回升一致，但改善幅度仍需题量、正确率和用时验证。',
       '2026-08-07': '8月7日学习复盘阶段性结论：\n与昨天8月6日报相比，专注、听课和精神状态保持稳定，做题状态则由“有卡顿”首次改善为“顺畅”。这是积极信号，但学生仍明确指出基础知识容易忘、运用生疏，且当天没有记录具体模块、题量、正确率、用时和提示次数，因此不能据此判断基础已经掌握。下一步应把“基础大盘”拆成小单元，通过闭卷回忆、针对练习、错因归类、变式迁移和隔日复测，验证知识能否记住并独立运用。',
       '2026-08-08': '8月8日学习复盘阶段性结论：\n六天记录显示化学做题状态已从“比较吃力”逐步改善，并连续两天保持“顺畅”；当天能完成四类大题的基本解答，两张试卷选择题正确率过半。但难题仍难推进，部分正确来自猜测，审题不仔细会遗漏思路，“思考与解决”也未填写，因此不能据此认定化学已经稳定过关。数学可以成为下一阶段主科，但应先用四类大题独立完成度、扣除猜测后的真实正确率和隔日复测完成化学阶段验收，并保留每2—3天一次的化学维护。',
-      '2026-08-10': '8月10日学习复盘阶段性结论：\n这是由化学切换到数学后的首份记录。专注度仍为4分、听课较好、精神一般，整体投入状态稳定；做题变为“比较吃力”，同时学生能记得高一解题步骤，但不会部分二级结论和推导公式。当前更可能是数学知识网络尚未重新激活，不能直接理解为整体学习能力退步。下一步应把前12道选填作为数学基线，记录正确率、用时、模块和错因；大题按“识别考点—写核心公式—分步推导—无提示复现”训练。二级结论应连接定义、来源和适用条件，并继续保留化学低频复测。'
+      '2026-08-10': '8月10日学习复盘阶段性结论：\n这是由化学切换到数学后的首份记录。专注度仍为4分、听课较好、精神一般，整体投入状态稳定；做题变为“比较吃力”，同时学生能记得高一解题步骤，但不会部分二级结论和推导公式。当前更可能是数学知识网络尚未重新激活，不能直接理解为整体学习能力退步。下一步应把前12道选填作为数学基线，记录正确率、用时、模块和错因；大题按“识别考点—写核心公式—分步推导—无提示复现”训练。二级结论应连接定义、来源和适用条件，并继续保留化学低频复测。',
+      '2026-08-11': '8月11日学习复盘阶段性结论：\n数学训练第二天，做题状态由“比较吃力”改善为“有卡顿”，但专注度从4分降到3分、听课由较好变为一般。学生认为本学期知识点没有太大漏洞，却同时记录看题没思路、混淆二级结论与答题步骤、大题答题不规范，说明知识熟悉度与独立调用、规范输出之间仍有断点。下一步应把错题记录细化到卡住位置、所需公式、适用条件和隔日重做结果。',
+      '2026-08-13': '8月13日学习复盘阶段性结论：\n本记录截图原标8月12日，因8月12日无课，按确认校正为8月13日。学生开始主动连接函数图像与基础知识，并尝试自己推导三角函数和立体几何公式；但对二元方程和函数不熟、不会依据题意画图，说明题意到数学对象的转换仍薄弱。“容易猜对答案”不能作为掌握证据，后续应扣除猜测题统计真实正确率，并记录画图与建模所需时间。',
+      '2026-08-14': '8月14日学习复盘阶段性结论：\n本记录截图原标8月13日，已按无课顺延规则校正。专注和听课状态回升，但精神疲惫、做题比较吃力，学生也明确受情绪和环境影响。自报错题正确率60%是积极信号，但缺少题量、难度、用时、提示和猜测信息，暂不能视为稳定掌握。下一步应在相同题量与难度下复测，把概率知识漏洞、速度问题和状态影响分开记录。',
+      '2026-08-15': '8月15日学习复盘阶段性结论：\n本记录截图原标8月14日，已按无课顺延规则校正。学生从数学切回化学后，做题由此前连续“顺畅”变为“有卡顿”，并出现专注3分、听课一般和精神疲惫。虽然自报选择准确率七成，但同时承认多题靠猜，方程式条件书写也不规范，因此不能认定化学已稳定保持。下一步应先闭卷提取熵焓与方程式条件，再限时计算，并分开统计确定会做、排除选择和纯猜。'
     };
 
     const views = Array.from(document.querySelectorAll('[data-route]'));

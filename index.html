@@ -95,6 +95,10 @@
       text-decoration: none;
     }
 
+    .button[hidden] {
+      display: none !important;
+    }
+
     .button.primary {
       border-color: var(--primary);
       background: var(--primary);
@@ -699,6 +703,50 @@
         statusRatings: { focus: "4分", lecture: "较好", practice: "比较吃力", energy: "一般" },
         selfReview: "换学科没反应过来",
         updatedAt: "2026-08-10T15:00:00.000Z"
+      },
+      "2026-08-11": {
+        subject: "math",
+        todayTasks: "向量方程和函数运算\n模考大题",
+        tomorrowPlan: "立体几何和三角函数",
+        goodPoints: "对本学期知识点没太大漏洞\n大题答题不规范",
+        problems: "看题没思路容易混淆二级结论和答题步骤",
+        solutions: "规范错题",
+        statusRatings: { focus: "3分", lecture: "一般", practice: "有卡顿", energy: "一般" },
+        selfReview: "",
+        updatedAt: "2026-08-11T15:00:00.000Z"
+      },
+      "2026-08-13": {
+        subject: "math",
+        todayTasks: "高考原题大题\n三角函数和圆锥曲线方程\n立体几何二级结论",
+        tomorrowPlan: "选填基础\n概率和统计",
+        goodPoints: "草稿清晰分布做答\n容易猜对答案",
+        problems: "对二元方程和函数的知识点不熟\n不会依据题意画图",
+        solutions: "对齐函数图像和基本知识联系\n自己推导三角函数和立体几何公式",
+        statusRatings: { focus: "3分", lecture: "一般", practice: "有卡顿", energy: "一般" },
+        selfReview: "",
+        updatedAt: "2026-08-13T15:00:00.000Z"
+      },
+      "2026-08-14": {
+        subject: "math",
+        todayTasks: "复习并推导基础公式\n整理错题",
+        tomorrowPlan: "",
+        goodPoints: "没有忘清以前的错误\n错题正确率达百分之六十",
+        problems: "概率知识点漏洞大\n做题速度太慢",
+        solutions: "举一反三找类似题目做熟",
+        statusRatings: { focus: "4分", lecture: "较好", practice: "比较吃力", energy: "疲惫" },
+        selfReview: "被情绪和环境左右状态",
+        updatedAt: "2026-08-14T15:00:00.000Z"
+      },
+      "2026-08-15": {
+        subject: "chemistry",
+        todayTasks: "复习化学熵和焓\n练习原理大题",
+        tomorrowPlan: "主练计算",
+        goodPoints: "化学方程式书写大致原理熟悉\n选择准确率七成",
+        problems: "方程式条件书写不规范\n选择题知识点不清晰多蒙的",
+        solutions: "",
+        statusRatings: { focus: "3分", lecture: "一般", practice: "有卡顿", energy: "疲惫" },
+        selfReview: "",
+        updatedAt: "2026-08-15T15:00:00.000Z"
       }
     };
     const today = new Date();
@@ -841,6 +889,7 @@
       const entry = loadEntry(selectedDate);
       const fixed = isFixedEntry(selectedDate);
       const subject = getSubjectByValue(entry.subject || "");
+      document.getElementById("reportForm").setAttribute("aria-readonly", fixed ? "true" : "false");
       selectedDateTitle.textContent = `${key} ${weekdays[selectedDate.getDay()]}`;
       selectedSubject.textContent = subject.name;
       selectedSubject.className = `subject ${subject.className}`;
@@ -861,7 +910,7 @@
       document.getElementById("saveBtn").hidden = fixed;
       document.getElementById("clearBtn").hidden = fixed;
       saveState.textContent = fixed
-        ? "已固定，内容不可修改"
+        ? "仅供查看，内容已固定"
         : entry.updatedAt ? "已载入当天记录" : "可开始填写当天日报";
     }
 
